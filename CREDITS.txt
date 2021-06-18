@@ -1,0 +1,2 @@
+Thanks to creators of python and pygame - without their work this program would never exist.
+Thanks to everyone sending various bug reports and fixes.
