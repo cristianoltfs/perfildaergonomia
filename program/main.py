@@ -2,8 +2,6 @@
 import pygame
 pygame.init()
 
-# create the screen
-screen = pygame.display.set_mode((800, 600))
 
 # Background
 background = pygame.image.load('resources/images/tabuleiro.png')
@@ -13,6 +11,13 @@ background = pygame.image.load('resources/images/tabuleiro.png')
 pygame.display.set_caption("Perfil da Ergonomia")
 icon = pygame.image.load('resources/images/tabuleiro.png')
 pygame.display.set_icon(icon)
+
+#Obtendo tamanho da imagem
+altura_icon= icon.get_height()
+largura_icon = icon.get_width()
+
+#Create the screen
+screen = pygame.display.set_mode((largura_icon, altura_icon))
 
 # Game Loop
 running = True
@@ -27,7 +32,15 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        #Se esc for pressionado finaliza o programa
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
 
+    #Inserindo fundo (imagem de fundo)
+    screen.blit(icon, (0,0))
+
+    pygame.display.update()
 
 #running = True
 
