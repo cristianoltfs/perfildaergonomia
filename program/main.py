@@ -1,6 +1,10 @@
 # Import and initialize the pygame library
 import pygame
-pygame.init()
+#Importe para resolução da tela
+import ctypes
+user32 = ctypes.windll.user32
+#tamanho da tela
+screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
 # Title
 pygame.display.set_caption("Perfil da Ergonomia")
@@ -11,6 +15,9 @@ pygame.display.set_icon(icon)
 
 # Background
 background = pygame.image.load('resources/images/tabuleiro.png')
+
+#Alterando escala para o monitor
+#pygame.transform.scale(background,) ################## EM ANDAMENTO
 
 #Obtendo tamanho da imagem
 height_background= icon.get_height()
