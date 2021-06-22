@@ -17,11 +17,11 @@ pygame.display.set_icon(icon)
 background = pygame.image.load('resources/images/tabuleiro.png')
 
 #Alterando escala para o monitor
-#pygame.transform.scale(background,) ################## EM ANDAMENTO
+background = pygame.transform.scale(background, [screensize[0], screensize[1]])
 
 #Obtendo tamanho da imagem
-height_background= icon.get_height()
-width_background = icon.get_width()
+height_background= background.get_height()
+width_background = background.get_width()
 
 #Create the screen
 screen = pygame.display.set_mode((width_background, height_background))
