@@ -38,13 +38,12 @@ while running:
                 running = False
 
     #Inserindo fundo (imagem de fundo)
-    screen.blit(icon, (0,0))
+    # screen.blit(icon, (0,0))
 
     pygame.display.update()
 
-#running = True
+pygame.quit()
 
+#running = True
 #if __name__ == "__main__":
-    
-    
 #    print("Tudo certo")
