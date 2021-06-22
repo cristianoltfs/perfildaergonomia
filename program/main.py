@@ -57,6 +57,5 @@ def main():
         
     pygame.quit()
     
-#running = True
 if __name__ == "__main__":
     main()
