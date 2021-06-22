@@ -23,9 +23,12 @@ WHITE =(255, 255, 255)
 
 FPS = 30
 
+circulo = pygame.image.load('resources/images/circulo.png')
+
 def draw_window():
     screen.fill(WHITE)
-    screen.blit(background,(0,0))
+    screen.blit(background,(0, 0))
+    screen.blit(circulo,(500, 250))
     pygame.display.update()
 
 def main():
