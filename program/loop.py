@@ -1,5 +1,5 @@
 import pygame
-import draw_window
+import draw_window as dw
 
 def loop(FPS, screen, background, WHITE):
     clock = pygame.time.Clock()
@@ -14,6 +14,6 @@ def loop(FPS, screen, background, WHITE):
                 if event.key == pygame.K_ESCAPE:
                     run = False
 
-        draw_window.draw_window(screen, background, WHITE)
+        dw.draw_window(screen, background, WHITE)
         
     pygame.quit()
