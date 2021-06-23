@@ -14,6 +14,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 WHITE =(255, 255, 255)
 FPS = 30
-   
-if __name__ == "__ergonomia__":
-    main(FPS, screen, background, WHITE)
+print(__name__)
+if __name__ == "__main__":
+    main.main(FPS, screen, background, WHITE)

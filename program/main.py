@@ -14,6 +14,6 @@ def main(FPS, screen, background, WHITE):
                 if event.key == pygame.K_ESCAPE:
                     run = False
 
-        draw_window(screen, background, WHITE)
+        draw_window.draw_window(screen, background, WHITE)
         
     pygame.quit()
