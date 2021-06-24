@@ -1,6 +1,12 @@
-import loop_main as lm
 import pygame as pg
 pg.init()
+
+import loop_main as lm
+
+from classes.jogador import Jogador
+j1 = Jogador()
+
+print(j1)
 
 pg.display.set_caption("Perfil da Ergonomia")
 
