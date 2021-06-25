@@ -1,7 +1,7 @@
 import pygame
 
 # import os
-# from pygame.locals import *
+from pygame.locals import *
 # from sys import exit
 
 #inicializar todas as funcoes

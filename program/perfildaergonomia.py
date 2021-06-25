@@ -38,5 +38,5 @@ if __name__ == "__main__":
                   BLUE,
                   DARKBLUE,
                   BORDERWIDTH,
-                  WIDTH)
-    #lm.loop_main(FPS, screen, background, WHITE)
+                  WIDTH,
+                  HEIGHT)
