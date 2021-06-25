@@ -1,12 +1,13 @@
 import pygame
-import os
-from pygame.locals import *
-from sys import exit
+
+# import os
+# from pygame.locals import *
+# from sys import exit
 
 #inicializar todas as funcoes
 pygame.init()
 #centralizar janela
-os.environ['SDL_VIDEO_CENTERED'] = '1'
+# os.environ['SDL_VIDEO_CENTERED'] = '1'
      
 screen_width=1366
 screen_height=768
@@ -29,7 +30,7 @@ border_width = 1
 
 menu=True
 selected="start"
-menu=True
+#menu=True
 #som principal
 pygame.mixer.music.set_volume(0.4)
 fundo=pygame.mixer.music.load('principal.ogg')
