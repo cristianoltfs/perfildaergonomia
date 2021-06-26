@@ -1,5 +1,6 @@
 import pygame as pg
 import draw_window as dw
+import loop_board as lb
 
 
 def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off):
@@ -42,26 +43,35 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
                     pg.mixer.music.set_volume(0.4)
                     screen.blit(sound_on, (WIDTH / 1.03, 10))
                     musica = 1
+
                 if mouse[0] > x - raio and mouse[1] > y - raio and mouse[0] < x + raio and mouse[1] < y + raio:
                     print('1 Jogador')
+                    pg.draw.rect(screen, WHITE, (HEIGHT/4, WIDTH/4, HEIGHT/2, WIDTH/2), border_radius=8)
+
                 elif mouse[0] > (x + diametro) + 10 - raio and mouse[1] > y - raio and mouse[0] < (
                             x + diametro) + 10 + raio and mouse[1] < y + raio:
                     print('2 Jogadores')
+
                 elif mouse[0] > x - raio + 160 and mouse[1] > y - raio and mouse[0] < x + raio + 160 and mouse[
                     1] < y + raio:
                     print('3 Jogadores')
+
                 elif mouse[0] > x + (diametro) * 3 + 30 - raio and mouse[1] > y - raio and mouse[0] < x + (
                         diametro) * 3 + 30 + raio and mouse[1] < y + raio:
                     print('4 Jogadores')
+
                 elif mouse[0] > x + (diametro) * 4 + 40 - raio and mouse[1] > y - raio and mouse[0] < x + (
                         diametro) * 4 + 40 + raio and mouse[1] < y + raio:
                     print('5 Jogadores')
+
                 elif mouse[0] > x + (diametro) * 5 + 50 - raio and mouse[1] > y - raio and mouse[0] < x + (
                         diametro) * 5 + 50 + raio and mouse[1] < y + raio:
                     print('6 Jogadores')
+
                 elif mouse[0] > x + (diametro) * 6 + 60 - raio and mouse[1] > y - raio and mouse[0] < x + (
                         diametro) * 6 + 60 + raio and mouse[1] < y + raio:
                     print('7 Jogadores')
+
                 elif mouse[0] > x + (diametro) * 7 + 70 - raio and mouse[1] > y - raio and mouse[0] < x + (
                         diametro) * 7 + 70 + raio and mouse[1] < y + raio:
                     print('8 Jogadores')

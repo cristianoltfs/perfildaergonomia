@@ -43,11 +43,11 @@ def loop_begin(FPS,
         clock.tick(FPS)
         for event in pg.event.get():
             #botoes do teclado
-            if event.type==pg.QUIT:
+            if event.type == pg.QUIT:
                 run = False
-            if event.type==pg.KEYDOWN:
-                if event.key==pg.K_UP:
-                    selected="start"
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_UP:
+                    selected = "start"
                     botton_click_sound.play()
                 elif event.key == pg.K_DOWN:
                     selected="quit"
@@ -57,7 +57,7 @@ def loop_begin(FPS,
                 if event.key == pg.K_RETURN:
                     if selected == "start":
                         lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
-                    if selected=="quit":
+                    if selected == "quit":
                         run = False
             if event.type == pg.MOUSEBUTTONDOWN:
                 x = pg.mouse.get_pos()[0]
