@@ -63,54 +63,54 @@ def loop_begin(FPS,
                 x = pg.mouse.get_pos()[0]
                 y = pg.mouse.get_pos()[1]
 
-                if x > WIDTH/2.35 and y > HEIGHT/2.65 and x < WIDTH/2.35 + 200 and y < HEIGHT/2.65 + 50:
+                if x > WIDTH / 2.35 and y > HEIGHT / 2.65 and x < WIDTH / 2.35 + 200 and y < HEIGHT / 2.65 + 50:
                     lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT,sound_on, sound_off)
 
-                if x > WIDTH/2.35 and y > HEIGHT/2.20 and x < WIDTH/2.35 + 200 and y < HEIGHT/2.20 + 50:
+                if x > WIDTH / 2.35 and y > HEIGHT / 2.20 and x < WIDTH/2.35 + 200 and y < HEIGHT / 2.20 + 50:
                     run = False
 
-                if x > WIDTH/1.03 and y > 10 and x < WIDTH/1.03 + 34 and y < 10 + 34 and musica == 1:
+                if x > WIDTH / 1.03 and y > 10 and x < WIDTH / 1.03 + 34 and y < 10 + 34 and musica == 1:
                     screen.blit(sound_off, (WIDTH / 1.03, 10))
                     pg.mixer.music.set_volume(0)
                     musica = 0
 
-                elif x > WIDTH/1.03 and y > 10 and x < WIDTH/1.03 + 34 and y < 10 + 34 and musica == 0:
+                elif x > WIDTH / 1.03 and y > 10 and x < WIDTH / 1.03 + 34 and y < 10 + 34 and musica == 0:
                     pg.mixer.music.set_volume(0.4)
                     screen.blit(sound_on, (WIDTH / 1.03, 10))
                     musica = 1
                         
-            title = font_title.render('Seja bem vindo ao Perfil da ergonomia! Um jogo criado dentro da UFOP!',False, BABYBLUE)
-            sub_title = font_title.render('Colaboradores: José da Silva, Aline Santos, Joana Smith, Fabricio',False,BABYBLUE)
+            title = font_title.render('Seja bem vindo ao Perfil da ergonomia! Um jogo criado dentro da UFOP!', False, BABYBLUE)
+            sub_title = font_title.render('Colaboradores: José da Silva, Aline Santos, Joana Smith, Fabricio', False,BABYBLUE)
     
             if selected == "start":
                 
                 text_start = font_menu.render('Iniciar',True, WHITE)
                 
-                (x, y, width, height) = (WIDTH/2.35, HEIGHT/2.65, 200, 50)
-                pg.draw.rect(screen, WHITE, (x, y, width, height),border_radius=9, width=BORDERWIDTH)
+                (x, y, width, height) = (WIDTH / 2.35, HEIGHT / 2.65, 200, 50)
+                pg.draw.rect(screen, WHITE, (x, y, width, height), border_radius=9, width=BORDERWIDTH)
                 #selecao
-                pg.draw.rect(screen, DARKBLUE, (x, y, width-1, height-1),border_radius=9)
+                pg.draw.rect(screen, DARKBLUE, (x, y, width - 1, height - 1), border_radius=9)
     
             else:
-                text_start = font_menu.render('Iniciar',True, BLACK)
-                (x, y, width, height) = (WIDTH/2.35,HEIGHT/2.65,200,50)
-                pg.draw.rect(screen, BLUE, (x, y, width-1, height-1),border_radius=9)
+                text_start = font_menu.render('Iniciar', True, BLACK)
+                (x, y, width, height) = (WIDTH / 2.35, HEIGHT / 2.65, 200, 50)
+                pg.draw.rect(screen, BLUE, (x, y, width - 1, height - 1),border_radius=9)
     
             if selected == "quit":
                 text_quit = font_menu.render('Sair',True, WHITE)
              
     
-                (x, y, width, height) = (WIDTH/2.35,HEIGHT/2.20,200,50)
-                pg.draw.rect(screen, DARKBLUE, (x, y, width-1, height-1),border_radius=9) #azul claro
+                (x, y, width, height) = (WIDTH / 2.35,HEIGHT / 2.20, 200, 50)
+                pg.draw.rect(screen, DARKBLUE, (x, y, width-1, height-1), border_radius=9) #azul claro
     
-                pg.draw.rect(screen, WHITE, (x, y, width, height),border_radius=9, width = BORDERWIDTH) 
+                pg.draw.rect(screen, WHITE, (x, y, width, height), border_radius=9, width=BORDERWIDTH)
             else:    
                 text_quit = font_menu.render('Sair',True, BLACK)
                 
-                (x, y, width, height) = (WIDTH/2.35,HEIGHT/2.20,200,50)
+                (x, y, width, height) = (WIDTH / 2.35, HEIGHT / 2.20, 200, 50)
                 
-                pg.draw.rect(screen, WHITE, (x, y, width, height),border_radius=9, width = BORDERWIDTH)
-                pg.draw.rect(screen, BLUE, (x, y, width-1, height-1),border_radius=9)
+                pg.draw.rect(screen, WHITE, (x, y, width, height), border_radius=9, width=BORDERWIDTH)
+                pg.draw.rect(screen, BLUE, (x, y, width-1, height - 1), border_radius=9)
             
             #converter texto para rect
             title_rect = title.get_rect()
@@ -118,10 +118,10 @@ def loop_begin(FPS,
             quit_rect = text_quit.get_rect()
            
             # Posicionando texto e inserindo na tela
-            screen.blit(title, (WIDTH/2 - (title_rect[2]/2), 500))
-            screen.blit(sub_title, (WIDTH/2 - (title_rect[2]/2), 520))
-            screen.blit(text_start, (WIDTH/2 - (start_rect[2]/2), 300))
-            screen.blit(text_quit, (WIDTH/2 - (quit_rect[2]/2), 360))
+            screen.blit(title, (WIDTH / 2 - (title_rect[2] / 2), 500))
+            screen.blit(sub_title, (WIDTH / 2 - (title_rect[2] / 2), 520))
+            screen.blit(text_start, (WIDTH / 2 - (start_rect[2] / 2), 300))
+            screen.blit(text_quit, (WIDTH / 2 - (quit_rect[2] / 2), 360))
             pg.display.update()
 
     
