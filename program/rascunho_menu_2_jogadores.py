@@ -1,6 +1,6 @@
 import pygame as pg
-import os
-from sys import exit
+
+
 
 #inicializar todas as funcoes
 pg.init()
@@ -26,13 +26,13 @@ font_title = pg.font.SysFont('arial', 25, False, False) #quantos jogadores....
 font_button = pg.font.SysFont('arial', 45, False, False)
 
 clock = pg.time.Clock()
-FPS=30
+FPS = 40
 #borda do botão
 border_width = 1
 
 menu = True
 selected="start"
-menu = True
+
 button_selected='0'
 #fundo
 background = pg.image.load('resources/images/fundo_jogo_2.png')
@@ -57,20 +57,17 @@ while menu:
             if 385 <= mouse[0] <= 420 and  75 <= mouse[1] <= 145:
                     print('mouse2')
                     button_selected='2'                    
-                    
-                    
+
+
         mouse = pg.mouse.get_pos()
-        
-  
-                  
-                                          
+
         title=font_title.render('Quantos jogadores? ',True, BABYBLUE)
         
         if button_selected =="0":
             (x, y, raio) = (360, 110, 35)
             diametro = raio * 2
-            text_button1 = font_button.render('1',True, WHITE)
-            w = pg.draw.circle(screen, WHITE, (x, y),raio, width=border_width)
+            text_button1 = font_button.render('1', True, WHITE)
+            w = pg.draw.circle(screen, WHITE, (x, y), raio, width=border_width)
             
             text_button2 = font_button.render('2',True, WHITE)
             pg.draw.circle(screen, WHITE, ((x + diametro) + 10, y), raio, width=border_width)
@@ -88,49 +85,151 @@ while menu:
             pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio, width=border_width)
 
             text_button7 = font_button.render('7',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x+ (diametro) * 6 + 60, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 6 + 60, y), raio, width=border_width)
            
             text_button8 = font_button.render('8',True, WHITE)
             pg.draw.circle(screen, WHITE, (x + (diametro) * 7 + 70, y), raio, width=border_width)
 
         #cores de selecao
-        if 315 <= mouse[0] <= 385 and 75 <=mouse[1] <= 145:
-            
-            text_button1 = font_button.render('1',True, BLUE)
+        if mouse[0] > x - raio and mouse[1] > y - raio and mouse[0] < x + raio and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
 
-            pg.draw.circle(screen, WHITE , (360, 110), 35)
+        elif mouse[0] > (x + diametro) + 10 - raio and mouse[1] > y - raio and mouse[0] < (x + diametro) + 10 + raio and mouse[1] < y + raio:
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+        elif mouse[0] > x - raio + 160 and mouse[1] > y - raio and mouse[0] < x + raio + 160 and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+
+            text_button3 = font_button.render('3', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)
+
+        elif mouse[0] > x + (diametro) * 3 + 30 - raio and mouse[1] > y - raio and mouse[0] < x + (diametro) * 3 + 30 + raio and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+
+            text_button3 = font_button.render('3', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)
+
+            text_button4 = font_button.render('4', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio)
+
+        elif mouse[0] > x + (diametro) * 4 + 40 - raio and mouse[1] > y - raio and mouse[0] < x + (diametro) * 4 + 40 + raio and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+
+            text_button3 = font_button.render('3', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)
+
+            text_button4 = font_button.render('4', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio)
+
+            text_button5 = font_button.render('5', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio)
+
+        elif mouse[0] > x + (diametro) * 5 + 50 - raio and mouse[1] > y - raio and mouse[0] < x + (diametro) * 5 + 50 + raio and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+
+            text_button3 = font_button.render('3', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)
+
+            text_button4 = font_button.render('4', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio)
+
+            text_button5 = font_button.render('5', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio)
+
+            text_button6 = font_button.render('6', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio)
+
+        elif mouse[0] > x + (diametro) * 6 + 60 - raio and mouse[1] > y - raio and mouse[0] < x + (diametro) * 6 + 60 + raio and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+
+            text_button3 = font_button.render('3', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)
+
+            text_button4 = font_button.render('4', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio)
+
+            text_button5 = font_button.render('5', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio)
+
+            text_button6 = font_button.render('6', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio)
+
+            text_button7 = font_button.render('7', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 6 + 60, y), raio)
+
+        elif mouse[0] > x + (diametro) * 7 + 70 - raio and mouse[1] > y - raio and mouse[0] < x + (diametro) * 7 + 70 + raio and mouse[1] < y + raio:
+            text_button1 = font_button.render('1', True, BLUE)
+            pg.draw.circle(screen, WHITE, (360, 110), 35)
+
+            text_button2 = font_button.render('2', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)
+
+            text_button3 = font_button.render('3', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)
+
+            text_button4 = font_button.render('4', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio)
+
+            text_button5 = font_button.render('5', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio)
+
+            text_button6 = font_button.render('6', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio)
+
+            text_button7 = font_button.render('7', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 6 + 60, y), raio)
+
+            text_button8 = font_button.render('8', True, BLUE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 7 + 70, y), raio)
+
         else:
-
             pg.draw.circle(screen, BLACK, (360, 110), 35)
+            pg.draw.circle(screen, BLACK, (x + (diametro) + 10, y), raio)
+            pg.draw.circle(screen, BLACK, (x + (diametro * 2) + 20, y), raio)
+            pg.draw.circle(screen, BLACK, (x + (diametro) * 3 + 30, y), raio)
+            pg.draw.circle(screen, BLACK, (x + (diametro) * 4 + 40, y), raio)
+            pg.draw.circle(screen, BLACK, (x + (diametro) * 5 + 50, y), raio)
+            pg.draw.circle(screen, BLACK, (x + (diametro) * 6 + 60, y), raio)
+            pg.draw.circle(screen, BLACK, (x + (diametro) * 7 + 70, y), raio)
             
         if pg.mouse.get_pressed()[0] and w.rect.collidepoint(pg.mouse.get_pos()):
             print('DEU CERTO'  )
-            
-            
+
         '''    
         if button_selected=="2":
             text_button2=font_button.render('2',True, blue)
             pygame.draw.circle(screen,black,((x+diametro)+10),110)
         '''
-        
-        
-        
-        
-        
+
         #menu lateral para inserir os x nomes
-        title2=font_title.render('Insira os nomes aqui',True, BABYBLUE)
+        title2 = font_title.render('Insira os nomes aqui',True, BABYBLUE)
 
-        pg.draw.rect(screen, WHITE, (1000,100,250,500),border_radius=9, width=border_width)
+        #pg.draw.rect(screen, WHITE, (1000,100,250,500),border_radius=9, width=border_width)
 
-
-
-
-
-
-
-
-
-        
         #converter texto para rect
         title_rect = title.get_rect()
         title2_rect = title2.get_rect()
@@ -144,14 +243,10 @@ while menu:
         text_button7_rect = text_button7.get_rect()
         text_button8_rect = text_button8.get_rect()
 
-        
-        
-        
         # Posicionando texto e inserindo na tela
         screen.blit(title, (90, 100))
         screen.blit(title2, (1010, 70))
 
-        
         screen.blit(text_button1, (360 - (text_button1_rect[2] / 2), 110 - 35 / 2))
         screen.blit(text_button2, (360 + diametro, 110 - 35 / 2))
         screen.blit(text_button3, (360 + diametro * 2 + 10, 110 - 35 / 2))
@@ -159,13 +254,13 @@ while menu:
         screen.blit(text_button5, (360 + diametro * 4 + 30, 110 - 35 / 2))
         screen.blit(text_button6, (360 + diametro * 5 + 40, 110 - 35 / 2))
         screen.blit(text_button7, (360 + diametro * 6 + 50, 110 - 35 / 2))
-        screen.blit(text_button8, (360 + diametro * 7+ 60, 110 - 35 / 2))
+        screen.blit(text_button8, (360 + diametro * 7 + 60, 110 - 35 / 2))
 
-     
         pg.display.update()
         clock.tick(FPS)
 
 
+pg.quit()
 
 
 
