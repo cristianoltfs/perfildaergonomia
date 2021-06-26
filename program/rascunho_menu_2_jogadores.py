@@ -1,17 +1,12 @@
 import pygame as pg
 
-
-
-#inicializar todas as funcoes
 pg.init()
-#centralizar janela
-     
-screen_width=1366
-screen_height=768
-screen = pg.display.set_mode((screen_width, screen_height))
 
-width = screen.get_width() 
-height = screen.get_height() 
+WIDTH, HEIGHT = 1366, 768
+screen = pg.display.set_mode((WIDTH, HEIGHT))
+
+#width = screen.get_width()
+#height = screen.get_height()
 
 
 WHITE = (255, 255, 255)
@@ -28,12 +23,12 @@ font_button = pg.font.SysFont('arial', 45, False, False)
 clock = pg.time.Clock()
 FPS = 40
 #borda do botão
-border_width = 1
+BORDERWIDTH = 1
 
-menu = True
-selected="start"
+run = True
+#selected="start"
 
-button_selected='0'
+button_selected = '0'
 #fundo
 background = pg.image.load('resources/images/fundo_jogo_2.png')
 #logomarca
@@ -42,12 +37,11 @@ mouse = pg.mouse.get_pos()
 #inserindo imagens
 screen.blit(background,(0,0))
 #screen.blit(logo, (screen_width/2 -124,80))
-while menu:
+while run:
     for event in pg.event.get():
         #botoes do teclado
         if event.type == pg.QUIT:
-            pg.quit()
-            exit()
+            run = False
        
         if event.type == pg.MOUSEBUTTONDOWN:
             #limitando posicao x e y do campo mouse
@@ -67,28 +61,28 @@ while menu:
             (x, y, raio) = (360, 110, 35)
             diametro = raio * 2
             text_button1 = font_button.render('1', True, WHITE)
-            w = pg.draw.circle(screen, WHITE, (x, y), raio, width=border_width)
+            w = pg.draw.circle(screen, WHITE, (x, y), raio, width=BORDERWIDTH)
             
             text_button2 = font_button.render('2',True, WHITE)
-            pg.draw.circle(screen, WHITE, ((x + diametro) + 10, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, ((x + diametro) + 10, y), raio, width=BORDERWIDTH)
             
             text_button3 = font_button.render('3',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x + (diametro) * 2 + 20, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 2 + 20, y), raio, width=BORDERWIDTH)
             
             text_button4 = font_button.render('4',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio, width=BORDERWIDTH)
            
             text_button5 = font_button.render('5',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio, width=BORDERWIDTH)
             
             text_button6 = font_button.render('6',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio, width=BORDERWIDTH)
 
             text_button7 = font_button.render('7',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x + (diametro) * 6 + 60, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 6 + 60, y), raio, width=BORDERWIDTH)
            
             text_button8 = font_button.render('8',True, WHITE)
-            pg.draw.circle(screen, WHITE, (x + (diametro) * 7 + 70, y), raio, width=border_width)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 7 + 70, y), raio, width=BORDERWIDTH)
 
         #cores de selecao
         if mouse[0] > x - raio and mouse[1] > y - raio and mouse[0] < x + raio and mouse[1] < y + raio:
