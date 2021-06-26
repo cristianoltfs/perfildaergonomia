@@ -34,7 +34,8 @@ def loop_begin(FPS,
     screen.blit(background, (0,0))
     screen.blit(logo_begin, (WIDTH/2 -124,80))
     screen.blit(sound_on, (WIDTH/1.03, 10))
-    
+
+    musica = 1
     run = True
     selected = "start"
 
@@ -66,9 +67,16 @@ def loop_begin(FPS,
                     lp.loop_players(FPS, screen, WHITE)
                 if x > WIDTH/2.35 and y > HEIGHT/2.20 and x < WIDTH/2.35 + 200 and y < HEIGHT/2.20 + 50:
                     run = False
-                if x > WIDTH/1.03 and y > 10 and x < WIDTH/1.03 + 34 and y < 10 + 34:
+
+                if x > WIDTH/1.03 and y > 10 and x < WIDTH/1.03 + 34 and y < 10 + 34 and musica == 1:
                     screen.blit(sound_off, (WIDTH / 1.03, 10))
                     pg.mixer.music.set_volume(0)
+                    musica = 0
+
+                elif x > WIDTH/1.03 and y > 10 and x < WIDTH/1.03 + 34 and y < 10 + 34 and musica == 0:
+                    pg.mixer.music.set_volume(0.4)
+                    screen.blit(sound_on, (WIDTH / 1.03, 10))
+                    musica = 1
                         
             title = font_title.render('Seja bem vindo ao Perfil da ergonomia! Um jogo criado dentro da UFOP!',False, BABYBLUE)
             sub_title = font_title.render('Colaboradores: José da Silva, Aline Santos, Joana Smith, Fabricio',False,BABYBLUE)
