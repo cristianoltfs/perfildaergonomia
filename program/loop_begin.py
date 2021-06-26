@@ -38,8 +38,6 @@ def loop_begin(FPS,
         print("run run run")
         clock.tick(FPS)
         for event in pg.event.get():
-            
-            
             #botoes do teclado
             if event.type==pg.QUIT:
                 run = False
@@ -52,12 +50,18 @@ def loop_begin(FPS,
                     botton_click_sound.play()
                 if event.key == pg.K_ESCAPE:
                     run = False
-                if event.key==pg.K_RETURN:
+                if event.key == pg.K_RETURN:
                     if selected == "start":
                         lp.loop_players(FPS, screen, WHITE)
                     if selected=="quit":
                         run = False
-
+            if event.type == pg.MOUSEBUTTONDOWN:
+                x = pg.mouse.get_pos()[0]
+                y = pg.mouse.get_pos()[1]
+                if x > WIDTH/2.35 and y > HEIGHT/2.65 and x < WIDTH/2.35 + 200 and y < HEIGHT/2.65 + 50:
+                    lp.loop_players(FPS, screen, WHITE)
+                if x > WIDTH/2.35 and y > HEIGHT/2.20 and x < WIDTH/2.35 + 200 and y < HEIGHT/2.20 + 50:
+                    run = False
                         
             title = font_title.render('Seja bem vindo ao Perfil da ergonomia! Um jogo criado dentro da UFOP!',False, BABYBLUE)
             sub_title = font_title.render('Colaboradores: José da Silva, Aline Santos, Joana Smith, Fabricio',False,BABYBLUE)
@@ -69,15 +73,15 @@ def loop_begin(FPS,
                 (x, y, width, height) = (WIDTH/2.35, HEIGHT/2.65, 200, 50)
                 pg.draw.rect(screen, WHITE, (x, y, width, height),border_radius=9, width=BORDERWIDTH)
                 #selecao
-                pg.draw.rect(screen, DARKBLUE, (x, y, width-1, height-1),border_radius=9) #azul claro
+                pg.draw.rect(screen, DARKBLUE, (x, y, width-1, height-1),border_radius=9)
     
             else:
-                text_start=font_menu.render('Iniciar',True, BLACK)
+                text_start = font_menu.render('Iniciar',True, BLACK)
                 (x, y, width, height) = (WIDTH/2.35,HEIGHT/2.65,200,50)
                 pg.draw.rect(screen, BLUE, (x, y, width-1, height-1),border_radius=9)
     
-            if selected =="quit":
-                text_quit=font_menu.render('Sair',True, WHITE)
+            if selected == "quit":
+                text_quit = font_menu.render('Sair',True, WHITE)
              
     
                 (x, y, width, height) = (WIDTH/2.35,HEIGHT/2.20,200,50)
@@ -85,7 +89,7 @@ def loop_begin(FPS,
     
                 pg.draw.rect(screen, WHITE, (x, y, width, height),border_radius=9, width = BORDERWIDTH) 
             else:    
-                text_quit=font_menu.render('Sair',True, BLACK)
+                text_quit = font_menu.render('Sair',True, BLACK)
                 
                 (x, y, width, height) = (WIDTH/2.35,HEIGHT/2.20,200,50)
                 
@@ -93,9 +97,9 @@ def loop_begin(FPS,
                 pg.draw.rect(screen, BLUE, (x, y, width-1, height-1),border_radius=9)
             
             #converter texto para rect
-            title_rect=title.get_rect()
-            start_rect=text_start.get_rect()
-            quit_rect=text_quit.get_rect()    
+            title_rect = title.get_rect()
+            start_rect = text_start.get_rect()
+            quit_rect = text_quit.get_rect()
            
             # Posicionando texto e inserindo na tela
             screen.blit(title, (WIDTH/2 - (title_rect[2]/2), 500))
@@ -103,10 +107,6 @@ def loop_begin(FPS,
             screen.blit(text_start, (WIDTH/2 - (start_rect[2]/2), 300))
             screen.blit(text_quit, (WIDTH/2 - (quit_rect[2]/2), 360))
             pg.display.update()
-            
-            # clicar no botão iniciar com mouse
-#            if event.type == pg.MOUSEBUTTONDOWN:
-                # start_rect.collidepoint((WIDTH/2 - (start_rect[2]/2), 300))
-                # lp.loop_players(FPS, screen, WHITE)
+
     
     pg.quit()
