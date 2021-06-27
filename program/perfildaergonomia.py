@@ -26,7 +26,7 @@ DARKBLUE = (66, 191, 254)
 
 BORDERWIDTH = 1
 
-FPS = 30
+FPS = 100
 
 if __name__ == "__main__":
     lb.loop_begin(FPS,
