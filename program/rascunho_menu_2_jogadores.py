@@ -26,7 +26,7 @@ font_title = pg.font.SysFont('arial', 25, False, False) #quantos jogadores....
 font_button = pg.font.SysFont('arial', 45, False, False)
 
 clock = pg.time.Clock()
-FPS=30
+FPS=100
 #borda do botão
 border_width = 1
 
@@ -48,16 +48,22 @@ while menu:
         if event.type == pg.QUIT:
             pg.quit()
             exit()
-       
+            '''
         if event.type == pg.MOUSEBUTTONDOWN:
             #limitando posicao x e y do campo mouse
             if 315 <= mouse[0] <= 385 and 75 <= mouse[1] <= 145:
                     print('mouse')
                     button_selected='1'
+                    
+                    
+                    
+                    
+                    
+                    
             if 385 <= mouse[0] <= 420 and  75 <= mouse[1] <= 145:
                     print('mouse2')
                     button_selected='2'                    
-                    
+            '''           
                     
         mouse = pg.mouse.get_pos()
         
@@ -65,18 +71,22 @@ while menu:
                   
                                           
         title=font_title.render('Quantos jogadores? ',True, BABYBLUE)
+        (x, y, raio) = (360, 110, 35)
+        diametro = raio * 2
         
         if button_selected =="0":
-            (x, y, raio) = (360, 110, 35)
-            diametro = raio * 2
+           
             text_button1 = font_button.render('1',True, WHITE)
             w = pg.draw.circle(screen, WHITE, (x, y),raio, width=border_width)
-            
+            w = pg.draw.circle(screen, BLUE, (x, y),raio)
+
             text_button2 = font_button.render('2',True, WHITE)
             pg.draw.circle(screen, WHITE, ((x + diametro) + 10, y), raio, width=border_width)
+            pg.draw.circle(screen, BLUE, ((x + diametro) + 10, y), raio, width=border_width)
             
             text_button3 = font_button.render('3',True, WHITE)
             pg.draw.circle(screen, WHITE, (x + (diametro) * 2 + 20, y), raio, width=border_width)
+            pg.draw.circle(screen, BLUE, (x + (diametro) * 2 + 20, y), raio, width=border_width)
             
             text_button4 = font_button.render('4',True, WHITE)
             pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio, width=border_width)
@@ -99,15 +109,51 @@ while menu:
             text_button1 = font_button.render('1',True, BLUE)
 
             pg.draw.circle(screen, WHITE , (360, 110), 35)
-        else:
-
-            pg.draw.circle(screen, BLACK, (360, 110), 35)
             
+        elif 385 <= mouse[0] <= 420 and  75 <= mouse[1] <= 145:
+            
+            text_button2 = font_button.render('2',True, BLUE)
+            pg.draw.circle(screen, BLACK , (440, 110),35)    
+
+        else:
+                 
+            text_button1 = font_button.render('1',True, WHITE)
+            w = pg.draw.circle(screen, BLUE, (x, y),raio)
+            
+            text_button2 = font_button.render('2',True, WHITE)
+            pg.draw.circle(screen, BLUE, ((x + diametro) + 10, y), raio)
+            
+            text_button3 = font_button.render('3',True, WHITE)
+            pg.draw.circle(screen, BLUE, (x + (diametro) * 2 + 20, y), raio)
+            
+            text_button4 = font_button.render('4',True, WHITE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 3 + 30, y), raio, width=border_width)
+           
+            text_button5 = font_button.render('5',True, WHITE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 4 + 40, y), raio, width=border_width)
+            
+            text_button6 = font_button.render('6',True, WHITE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 5 + 50, y), raio, width=border_width)
+
+            text_button7 = font_button.render('7',True, WHITE)
+            pg.draw.circle(screen, WHITE, (x+ (diametro) * 6 + 60, y), raio, width=border_width)
+           
+            text_button8 = font_button.render('8',True, WHITE)
+            pg.draw.circle(screen, WHITE, (x + (diametro) * 7 + 70, y), raio, width=border_width)
+
+            
+            
+            
+      
+            
+        '''    
         if pg.mouse.get_pressed()[0] and w.rect.collidepoint(pg.mouse.get_pos()):
             print('DEU CERTO'  )
             
+        '''
             
-        '''    
+            
+        '''   
         if button_selected=="2":
             text_button2=font_button.render('2',True, blue)
             pygame.draw.circle(screen,black,((x+diametro)+10),110)

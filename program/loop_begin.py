@@ -2,6 +2,8 @@ import pygame as pg
 import loop_players as lp
 
 #som principal
+pg.mixer.init()
+
 pg.mixer.music.set_volume(0.4)
 pg.mixer.music.load('resources/sounds/principal.ogg')
 pg.mixer.music.play(-1)
