@@ -309,7 +309,7 @@ while run:
         #menu lateral para inserir os x nomes
         title2 = font_title.render('Insira os nomes aqui',True, BABYBLUE)
 
-        #pg.draw.rect(screen, WHITE, (1000,100,250,500),border_radius=9, width=border_width)
+        pg.draw.rect(screen, WHITE, (1000,100,250,500),border_radius=9, width=border_width)
 
         #converter texto para rect
         title_rect = title.get_rect()
