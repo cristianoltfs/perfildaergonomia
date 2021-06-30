@@ -1,12 +1,17 @@
 import socket
 
-servidor = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-#Host igual a '' é igual a propria maquina
-servidor.bind(('',12000))
+udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+udp.bind(('',12000))
+
+dic = {'nome':'', 'ip':'', 'port':''}
 
 while True:
-    mensagem_bytes, endereco_ip_client = servidor.recvfrom(2048)
+    msg, client = udp.recvfrom(2048)
+#    mensagem_resposta = mensagem_bytes.decode()
+#    servidor.sendto(mensagem_resposta.encode(), endereco_ip_client)
+#    print(msg, client)
 
-    mensagem_resposta = mensagem_bytes.decode().upper()
-    servidor.sendto(mensagem_resposta.encode(), endereco_ip_client)
-    print(mensagem_resposta)
+    if  not ((msg.decode() in dic['nome']) and (client[0] in dic['ip']) and (client[1] in dic['port'])):
+        dic = {'nome':msg.decode(), 'ip':client[0], 'port':client[1]}
+        print(dic)
+        print('teste')
