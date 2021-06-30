@@ -7,8 +7,6 @@ from input_text import TextInputBox
 def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off):
     pg.init()
 
-    font_menu = pg.font.SysFont('arial', 25, False, False)
-    font_title = pg.font.SysFont('arial', 25, False, False)
     font_button = pg.font.SysFont('arial', 45, False, False)
 
     button_selected = '0'
@@ -28,29 +26,25 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
     screen.blit(sound_on, (WIDTH/1.03, 10))
     screen.blit(botao_nomes, (1000, 13))
     pg.draw.rect(screen, DARKBLUE, (320,70,650,80),border_radius=9,width=1)
-#circulo renderizado
-    #gfxdraw.aacircle(screen, 100, 200, 100, BLUE)
-    #gfxdraw.filled_circle(screen, 100, 200, 100, BLUE)
+
+    user_text = ''
+    base_font = pg.font.SysFont(None, 32)
+    input_rect=pg.Rect(1020,200,210,32)
     
     
-    font = pg.font.SysFont(None, 35)
-    text_input_box = TextInputBox(1050, 200, 200, font)
-    group = pg.sprite.Group(text_input_box)
+    
 
     while run:
+        clock.tick(60)
+
         event_list = pg.event.get()
 
         for event in event_list:
             # botoes do teclado
             if event.type == pg.QUIT:
                 run = False
-                
             mouse = pg.mouse.get_pos()
-            group.update(event_list)
-            group.draw(screen)
-            pg.display.flip()  
- 
-           
+            
             if event.type == pg.MOUSEBUTTONDOWN:
                 # limitando posicao x e y do campo mouse
                 #apertando os botoes
@@ -113,10 +107,27 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
 
             mouse = pg.mouse.get_pos()
 
-            #title = font_title.render('Quantos jogadores? ', True, BABYBLUE)
-           
-            
-            
+      
+            #terminar aqui
+            #falta armazenar o texto digitado numa variavel
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_BACKSPACE:
+                    user_text = user_text[:-1]
+                else:
+                    user_text += event.unicode
+                         
+                if len(user_text) >15:
+                    user_text = user_text[:-1]
+                if event.key == pg.K_RETURN:
+                    user=user_text
+                    
+            print(user_text)
+                    
+            pg.draw.rect(screen,DARKBLUE,input_rect,border_radius=6)
+            text_surface = base_font.render(user_text,True,WHITE)
+
+            screen.blit(text_surface,(input_rect.x + 5,input_rect.y))
+        
             
             # cores de selecao
             if mouse[0] > x - raio and mouse[1] > y - raio and mouse[0] < x + raio and mouse[1] < y + raio:
@@ -263,31 +274,17 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
             pg.draw.rect(screen, DARKBLUE, (1000,160,250,500),border_radius=9, width=1)
                 
             if button_selected == 1:
-                #pg.draw.rect(screen, WHITE, (1000,100,250,50),border_radius=9, width=1)
-
                 text_button1 = font_button.render('1', True, BLUE)
                 pg.draw.circle(screen, WHITE, (360, 110), 35)
             if button_selected == 2:
-                #pg.draw.rect(screen, WHITE, (1000,100,250,50),border_radius=9, width=1)
-
-                #pg.draw.rect(screen, WHITE, (1000,100,250,100),border_radius=9, width=1)
-
                 text_button1 = font_button.render('1', True, BLUE)
                 pg.draw.circle(screen, WHITE, (360, 110), 35)
 
                 text_button2 = font_button.render('2', True, BLUE)
                 pg.draw.circle(screen, WHITE, (x + (diametro) + 10, y), raio)               
                 
-                
-                
-                
+            
             if button_selected == 3:
-                
-                #pg.draw.rect(screen, WHITE, (1000,100,250,50),border_radius=9, width=1)
-
-                #pg.draw.rect(screen, WHITE, (1000,100,250,100),border_radius=9, width=1)
-                #pg.draw.rect(screen, WHITE, (1000,100,250,150),border_radius=9, width=1)
-                
                 text_button1 = font_button.render('1', True, BLUE)
                 pg.draw.circle(screen, WHITE, (360, 110), 35)
 
@@ -296,10 +293,6 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
 
                 text_button3 = font_button.render('3', True, BLUE)
                 pg.draw.circle(screen, WHITE, (x + (diametro * 2) + 20, y), raio)                
-                
-                
-                
-                
                 
             if button_selected == 4:
                 text_button1 = font_button.render('1', True, BLUE)
@@ -380,15 +373,7 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
                 text_button7 = font_button.render('7', True, BLUE)
                 pg.draw.circle(screen, WHITE, (x + (diametro) * 6 + 60, y), raio)                
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
+               
             if button_selected == 8:
                 text_button1 = font_button.render('1', True, BLUE)
                 pg.draw.circle(screen, WHITE, (360, 110), 35)
@@ -413,51 +398,7 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
 
                 text_button8 = font_button.render('8', True, BLUE)
                 pg.draw.circle(screen, WHITE, (x + (diametro) * 7 + 70, y), raio)           
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-            # menu lateral para inserir os x nomes
-            #title2 = font_title.render('Insira os nomes aqui', True, BABYBLUE)
-
-            # pg.draw.rect(screen, WHITE, (1000,100,250,500),border_radius=9, width=border_width)
-
-            # converter texto para rect
-            #title_rect = title.get_rect()
-            #title2_rect = title2.get_rect()
-            # botoes
-
+   
             text_button1_rect = text_button1.get_rect()
             text_button2_rect = text_button2.get_rect()
             text_button3_rect = text_button3.get_rect()

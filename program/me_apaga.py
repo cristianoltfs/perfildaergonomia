@@ -12,7 +12,7 @@ group = pygame.sprite.Group(text_input_box)
 
 run = True
 while run:
-    clock.tick(60)
+    clock.tick(10)
     event_list = pygame.event.get()
     for event in event_list:
         if event.type == pygame.QUIT:
