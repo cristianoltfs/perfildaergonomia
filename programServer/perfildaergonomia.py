@@ -2,7 +2,8 @@
 
 import socket
 
-HOST = '200.239.167.212'
+# HOST = '200.239.167.212'
+HOST = 'localhost'
 PORT = 13333
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -12,6 +13,8 @@ print('Aguardando conexão de um cliente')
 conn, ender = s.accept()
 
 print('Conectado em: ', ender)
+
+n = 0
 
 while True:
     data = conn.recv(1024)
