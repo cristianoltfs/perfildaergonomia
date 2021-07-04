@@ -8,14 +8,15 @@ from player import Player
 HOST = 'localhost'
 PORT = 13333
 
+name = 'Cristiano'
+ip = '123.123.123.123'
+
+PlayerClient = Player(name, ip)
+PlayerClient.printPlayer(name, ip)
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST,PORT))
 s.sendall(str.encode('Bom dia Bóson!'))
 data = s.recv(1024)
 
 print('Mensagem ecoada: ', data.decode())
-
-name = 'Cristiano'
-ip = '123.123.123.123'
-Player1 = Player(name, ip)
-Player1.printPlayer(name, ip)
