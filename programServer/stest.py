@@ -7,7 +7,8 @@ import socket
 
 # socket é a combinação de um ip com um número de porta
 
-HOST = '200.239.167.212'
+HOST = 'localhost'
+# HOST = '200.239.167.212'
 PORT = 13333
 
 # combinar HOST e PORT para montar o socket
@@ -31,50 +32,29 @@ print('Aguardando conexão de um cliente')
 # crirar dois elementos: conexão e endereço
 # retorno do comando s.accept (conexão e endereço)
 # (comando para aceitar conexão)
-conn, ender = s.accept()
+# conn, ender = s.accept()
 
-print('Conectado em:', ender)
+dic = {'nome':'', 'ip':'', 'port':''}
 
 while True:
+    conn, ender = s.accept()
+    print('Conectado em ip: ', ender[0])
+    print('Conectado em port: ', ender[1])
+
     # 1024 bytes - tamanho máximo de dados recebidos nessa conexão
-    data = conn.recv(1024)
-    if not data:
+    msg = conn.recv(1024)
+    print('Player : ', msg.decode())
+
+    if  not ((msg.decode() in dic['nome']) and (ender[0] in dic['ip']) and (ender[1] in dic['port'])):
+        dic = {'nome':msg.decode(), 'ip':ender[0], 'port':ender[1]}
+        print(dic)
+        print('teste')
+    else:
+        print('já está jogando')
+    if not msg:
         ('Fechando a conexão')
         conn.close()
         break
+
     #enviar mensagem de volta para o cliente
-    conn.sendall(data)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    conn.sendall(msg)

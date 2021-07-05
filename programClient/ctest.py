@@ -4,7 +4,8 @@
 
 import socket
 
-HOST = '200.239.167.212'
+HOST = 'localhost'
+# HOST = '200.239.165.217'
 PORT = 13333
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
