@@ -4,8 +4,7 @@ import socket
 
 from player import Player
 
-#HOST = '200.239.167.212'
-HOST = 'localhost'
+HOST = '200.239.167.212'
 PORT = 13333
 
 name = 'Cristiano'
