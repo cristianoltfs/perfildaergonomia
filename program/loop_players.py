@@ -2,7 +2,6 @@ import pygame as pg
 import draw_window as dw
 import loop_board as lb
 from pygame import gfxdraw
-from input_text import TextInputBox
 
 def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off):
     pg.init()
@@ -12,7 +11,9 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
     button_selected = '0'
 
     background = pg.image.load('resources/images/fundo_jogo_2.png')
-
+    
+    arrow = pg.image.load('resources/images/seta.png')
+    
     clock = pg.time.Clock()
     run = True
     musica = 1
@@ -25,14 +26,32 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
     screen.blit(botao_jogadores, (80, 13))
     screen.blit(sound_on, (WIDTH/1.03, 10))
     screen.blit(botao_nomes, (1000, 13))
-    pg.draw.rect(screen, DARKBLUE, (320,70,650,80),border_radius=9,width=1)
+    arrow_rect = arrow.get_rect()
+
+    screen.blit(arrow,(1170,530))
+
+    pg.draw.rect(screen, DARKBLUE, (320,70,650,80),border_radius=9,width=2)
+    pg.draw.rect(screen, BLUE, (320,70,648,78),border_radius=9)
+
+    #Nome dos jogadores
+    pg.draw.rect(screen, DARKBLUE, (320,170,650,400),border_radius=9,width=2)
+    pg.draw.rect(screen, BLUE, (320,170,648,398),border_radius=9)
+
+    pg.draw.rect(screen, DARKBLUE, (1000,170,250,100),border_radius=9, width=2)
+    pg.draw.rect(screen, BLUE, (1000,170,248,98),border_radius=9)
+
+
 
     user_text = ''
-    base_font = pg.font.SysFont(None, 32)
-    input_rect=pg.Rect(1020,200,210,32)
-    
-    
-    
+    base_font = pg.font.SysFont(None, 35)
+    input_rect=pg.Rect(1018,200,222,44)
+    active = False
+    color=BABYBLUE
+    font_title = pg.font.SysFont(None, 30)
+    name_player=''
+    cont=1
+    ok=False
+    cont2=0
 
     while run:
         clock.tick(60)
@@ -106,29 +125,48 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
                     button_selected = 8
 
             mouse = pg.mouse.get_pos()
-
-      
-            #terminar aqui
-            #falta armazenar o texto digitado numa variavel
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_BACKSPACE:
-                    user_text = user_text[:-1]
-                else:
-                    user_text += event.unicode
-                         
-                if len(user_text) >15:
-                    user_text = user_text[:-1]
-                if event.key == pg.K_RETURN:
-                    user=user_text
-                    
-            print(user_text)
-                    
-            pg.draw.rect(screen,DARKBLUE,input_rect,border_radius=6)
-            text_surface = base_font.render(user_text,True,WHITE)
-
-            screen.blit(text_surface,(input_rect.x + 5,input_rect.y))
-        
             
+            
+            if event.type == pg.MOUSEBUTTONDOWN:
+                
+                if input_rect.collidepoint(event.pos):
+                    active = not active
+                    
+                else:
+                    active = False
+                    
+                color = DARKBLUE if active else BABYBLUE
+
+            if event.type == pg.KEYDOWN:
+                if active:
+                    if event.key == pg.K_RETURN:
+                        name_player=user_text
+                        ok=True
+                        print(name_player)
+                        user_text = ''
+                    elif event.key == pg.K_BACKSPACE:
+                        user_text = user_text[:-1]
+                    if len(user_text)>=12:
+                        user_text = user_text[:-1]
+                    else:
+                        user_text += event.unicode                
+                    
+                    
+            pg.draw.rect(screen,color,input_rect,border_radius=8)
+            text_surface = base_font.render(user_text,True,WHITE)
+            
+            screen.blit(text_surface,(input_rect.x + 5,input_rect.y))
+            if ok:
+                name_player=('JOGADOR: %d --- %s' %(cont,name_player))
+                name=font_title.render(name_player,True,WHITE)
+                screen.blit(name,(340,190+cont2))
+
+                cont=cont+1
+                cont2=cont2+35
+                ok=False
+
+                
+                
             # cores de selecao
             if mouse[0] > x - raio and mouse[1] > y - raio and mouse[0] < x + raio and mouse[1] < y + raio:
                 text_button1 = font_button.render('1', True, BLUE)
@@ -271,7 +309,6 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
                 text_button6 = font_button.render('6', True, WHITE)
                 text_button7 = font_button.render('7', True, WHITE)
                 text_button8 = font_button.render('8', True, WHITE)
-            pg.draw.rect(screen, DARKBLUE, (1000,160,250,500),border_radius=9, width=1)
                 
             if button_selected == 1:
                 text_button1 = font_button.render('1', True, BLUE)
@@ -408,9 +445,7 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
             text_button7_rect = text_button7.get_rect()
             text_button8_rect = text_button8.get_rect()
 
-            # Posicionando texto e inserindo na tela
-            #screen.blit(title, (90, 100))
-            #screen.blit(title2, (1010, 70))
+        
 
             screen.blit(text_button1, (360 - (text_button1_rect[2] / 2), 110 - 35 / 1.25))
             screen.blit(text_button2, (360 + diametro, 110 - 35 / 1.25))
