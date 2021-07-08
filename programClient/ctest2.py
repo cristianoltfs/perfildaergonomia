@@ -1,7 +1,6 @@
 # Import socket module
 import socket
-  
-  
+
 def Main():
     # local host IP '127.0.0.1'
     host = '200.239.165.217'
