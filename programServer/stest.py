@@ -9,7 +9,7 @@ import array
 # socket é a combinação de um ip com um número de porta
 
 #HOST = 'localhost'
-HOST = '200.239.167.212'
+HOST = '200.239.165.217'
 PORT = 13333
 
 # combinar HOST e PORT para montar o socket
