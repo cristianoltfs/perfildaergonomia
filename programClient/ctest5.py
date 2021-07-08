@@ -9,10 +9,13 @@ s.sendall(str.encode('Cliente conectado'))
 
 while True:
     servmsn =  s.recv(1024)
-    print("Enviada do servidor :" ,servmsn.decode())
-    dados = input()
-    s.sendall(str.encode(dados))
-    if dados == 'sair':
+    print("Resposta do servidor:" ,servmsn.decode())
+    print("Mensagem que foi enviada pelo cliente!")
+
+    nome = input()
+    s.sendall(str.encode(nome))
+    
+    if nome == 'sair':
         break
 
 s.close
