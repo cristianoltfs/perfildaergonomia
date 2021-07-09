@@ -10,12 +10,9 @@ class Cliente(threading.Thread):
         self.username = cli_socket.recv(1024)
         self.csocket = cli_socket
         self.caddress = cli_address
-        print ("Nova conexão player: ", self.username.decode(), cli_address)
+        print ("Nova conexão. Player: ", self.username.decode(), cli_address, "Conectado")
     def run(self):
-        self.csocket.sendall(str.encode('teste'))
-
-
-
+       self.csocket.sendall(self.username + bytes(' você está conectado','UTF-8'))
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST,PORT))

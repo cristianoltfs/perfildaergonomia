@@ -6,6 +6,7 @@ PORT = 13333
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
+print('Digite seu nome:')
 nome = input()
 s.sendall(str.encode(nome))
 
