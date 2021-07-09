@@ -12,7 +12,15 @@ class Cliente(threading.Thread):
         self.caddress = cli_address
         print ("Nova conexão. Player: ", self.username.decode(), cli_address, "Conectado")
     def run(self):
-       self.csocket.sendall(self.username + bytes(' você está conectado','UTF-8'))
+        self.csocket.sendall(self.username + bytes(' você está conectado','UTF-8'))
+        while True:
+            data = self.csocket.recv(2048)
+            msg = data.decode()
+            if msg == 'sair':
+                break
+            print ("Mensagem do cliente: ", msg)
+            self.csocket.sendall(bytes(msg,'UTF-8'))
+        print ("Cliente ", cli_address , " desconectado!")
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST,PORT))
@@ -22,8 +30,6 @@ print("Esperando conxão de clientes!")
 while True:
     s.listen()
     cli_socket, cli_address = s.accept()
-#    print('Conecado ao IP', cliAddress[0], 'e porta', cliAddress[1])
-#    cliSocket.send(str.encode('mensagem ç teste enviada pelo server','UTF-8'))
     cliente = Cliente(cli_address, cli_socket)
     cliente.start()
 

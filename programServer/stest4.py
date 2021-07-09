@@ -12,7 +12,7 @@ class ClientThread(threading.Thread):
             data = self.csocket.recv(2048)
             msg = data.decode()
             if msg=='bye':
-              break
+                break
             print ("from client", msg)
             self.csocket.send(bytes(msg,'UTF-8'))
         print ("Client at ", clientAddress , " disconnected...")

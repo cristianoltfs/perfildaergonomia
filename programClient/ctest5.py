@@ -18,6 +18,10 @@ while True:
     nome = input()
     
     if nome == 'sair':
+        s.sendall(str.encode(nome))
         break
+
+    s.sendall(str.encode(nome))
+
 
 s.close
