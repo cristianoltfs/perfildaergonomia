@@ -4,6 +4,9 @@ import threading
 HOST = '200.239.165.217'
 PORT = 13333
 
+class Sala():
+    pass
+
 class Cliente(threading.Thread):
     def __init__(self, cli_address, cli_socket):
         threading.Thread.__init__(self)
