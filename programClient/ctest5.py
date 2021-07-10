@@ -10,13 +10,17 @@ print('Digite seu nome:')
 nome = input()
 s.sendall(str.encode(nome))
 
+print('Digite a sua sala:')
+sala = input()
+s.sendall(str.encode(sala))
+
 while True:
 
     servmsn =  s.recv(1024)
     print("Resposta do servidor:" ,servmsn.decode())
 
     nome = input()
-    
+
     if nome == 'sair':
         s.sendall(str.encode(nome))
         break

@@ -10,13 +10,16 @@ class Cliente(threading.Thread):
         self.username = cli_socket.recv(1024)
         self.csocket = cli_socket
         self.caddress = cli_address
+        self.sala = 0
         print ("Nova conexão. Player: ", self.username.decode(), cli_address, "Conectado")
     def run(self):
-        self.csocket.sendall(self.username + bytes(' você está conectado','UTF-8'))
+        if self.sala == 0:
+            self.sala = self.csocket.recv(1024)
+        self.csocket.sendall(self.username + bytes(' você está conectado na sala ','UTF-8') + self.sala)
         while True:
             data = self.csocket.recv(2048)
             msg = data.decode()
-            if msg == 'sair':
+            if msg == 'sair' or msg == '':
                 break
             print ("Mensagem do cliente: ", msg)
             self.csocket.sendall(bytes(msg,'UTF-8'))
