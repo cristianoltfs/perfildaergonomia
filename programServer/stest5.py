@@ -9,11 +9,8 @@ PORT = 13333
 salas = ["n"] * 100
 
 class Sala():
-    def __init__(self, sala, username):
-        salas[sala] = username
-        # erro corrigir
-        # https://careerkarma.com/blog/python-typeerror-list-indices-must-be-integers-or-slices-not-str/
-
+    def __init__(self, sala):
+        self.nsala = sala
 
 class Cliente(threading.Thread):
     def __init__(self, cli_address, cli_socket):
@@ -24,11 +21,17 @@ class Cliente(threading.Thread):
         self.sala = 0
         print ("Nova conexão. Player: ", self.username.decode(), cli_address, "Conectado")
     def run(self):
-        if self.sala == 0:
+        if self.sala == 0: # verificar se o jogador está na sala
             self.sala = self.csocket.recv(1024).decode
-            #print(globals()[f"sala{self.sala}"])
-            self.sala7 = Sala(self.sala, self.username)
-            #globals()[f"sala{self.sala}"] = Sala(self.sala, self.username)
+            try: # verificar se a sala existe
+                self.sala # verificar se a sala existe
+            except: # se não existir, criar
+                self.sala = Sala(self.sala)
+#            self.sala7 = Sala(self.sala, self.username)
+#            print(globals()[f"sala{self.sala}"])
+#            globals()[f"sala{self.sala}"] = Sala(self.sala, self.username)
+#            self.globals()[f"sala{sala}"] = Sala(self.sala, self.username)
+                        
             
         self.csocket.sendall(self.username + bytes(' você está conectado na sala ','UTF-8') + self.sala)
         while True:
