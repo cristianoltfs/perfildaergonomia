@@ -1,6 +1,6 @@
 import pygame as pg
 import loop_players as lp
-
+import loop_name as ln
 #som principal
 pg.mixer.init()
 
@@ -58,7 +58,7 @@ def loop_begin(FPS,
                     run = False
                 if event.key == pg.K_RETURN:
                     if selected == "start":
-                        lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
+                        ln.loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
                     if selected == "quit":
                         run = False
             if event.type == pg.MOUSEBUTTONDOWN:
@@ -66,7 +66,7 @@ def loop_begin(FPS,
                 y = pg.mouse.get_pos()[1]
 
                 if x > WIDTH / 2.35 and y > HEIGHT / 2.65 and x < WIDTH / 2.35 + 200 and y < HEIGHT / 2.65 + 50:
-                    lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT,sound_on, sound_off)
+                    ln.loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT,sound_on, sound_off)
 
                 if x > WIDTH / 2.35 and y > HEIGHT / 2.20 and x < WIDTH/2.35 + 200 and y < HEIGHT / 2.20 + 50:
                     run = False
