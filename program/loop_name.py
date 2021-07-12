@@ -10,6 +10,8 @@ def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, 
     
     logo_begin = pg.image.load('resources/images/logo_reduzida.png')
 
+    text_sound = pg.mixer.Sound('resources/sounds/text.ogg')
+    botton_click_sound = pg.mixer.Sound('resources/sounds/smw_kick.wav')
 
 
     font_button = pg.font.SysFont('arial', 45, False, False)
@@ -118,15 +120,26 @@ def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, 
                     if event.key == pg.K_RETURN:
                         name_player=user_text
                         print(name_player)
+                        arquivo = open('nome.txt', 'a')
+                        arquivo.truncate(0)                        
+                     
+                        arquivo.writelines(user_text)
+                        arquivo.close()                          
                         user_text = ''
+                        botton_click_sound.play()
               
 
                     elif event.key == pg.K_BACKSPACE:
                         user_text = user_text[:-1]
-                    if len(user_text)>=12:
-                        user_text = user_text[:-1]
+                        text_sound.play()
+                 
                     else:
-                        user_text += event.unicode                
+                        user_text += event.unicode       
+                        text_sound.play()
+                       
+                        
+                    if len(user_text)>=15:
+                        user_text = user_text[:-1]                        
                     
                     
             pg.draw.rect(screen,color,input_rect,border_radius=8)
@@ -134,6 +147,7 @@ def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, 
             
             screen.blit(text_surface,(input_rect.x + 5,input_rect.y))
             if ok:
+               
                 lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
                 #numero da sala
             if event.type == pg.KEYDOWN:
@@ -142,29 +156,33 @@ def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, 
                         room=user_text_2
                         ok=True
                         print(name_player)
+                        arquivo_2 = open('sala.txt', 'a')
+                        arquivo_2.truncate(0)                        
+                        arquivo_2.writelines(user_text_2)
+                        arquivo_2.close()                          
+                        user_text_2 = ''
+                        
+                        botton_click_sound.play()
+                       
+                        
+                        
                         user_text_2 = ''
                     elif event.key == pg.K_BACKSPACE:
-                        user_text_2 = user_tex_2[:-1]
-                    if len(user_text_2)>=3:
                         user_text_2 = user_text_2[:-1]
+                        text_sound.play()
+
                     else:
-                        user_text_2 += event.unicode                
-                    
+                        user_text_2 += event.unicode  
+                        text_sound.play()
+                        
+                    if len(user_text_2)>=4:
+                        user_text_2 = user_text_2[:-1]                    
                     
             pg.draw.rect(screen,color_2,input_rect_room,border_radius=8)
             text_surface = base_font.render(user_text_2,True,WHITE)
             screen.blit(text_surface,(input_rect_room.x + 5,input_rect_room.y))
-
-
-
-
-
-
-
-
-
-
             pg.display.update()
             clock.tick(FPS)
+          
 
     pg.quit()

@@ -4,7 +4,7 @@ import loop_name as ln
 #som principal
 pg.mixer.init()
 
-pg.mixer.music.set_volume(0.4)
+pg.mixer.music.set_volume(0.3)
 pg.mixer.music.load('resources/sounds/principal.ogg')
 pg.mixer.music.play(-1)
 

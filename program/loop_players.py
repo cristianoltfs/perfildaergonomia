@@ -47,16 +47,25 @@ def loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDT
     input_rect=pg.Rect(1018,200,222,44)
     active = False
     color=BABYBLUE
-    font_title = pg.font.SysFont(None, 30)
+    font_title = pg.font.SysFont('arial',30,False, False)
     name_player=''
     cont=1
     ok=False
     cont2=0
+    arquivo = open("nome.txt", "r")
+    arquivo_2=open('sala.txt','r')
+    nome=arquivo.readlines()
+    sala=arquivo_2.readlines()
+    print(nome)
 
     while run:
-        clock.tick(60)
+        #clock.tick(60)
 
         event_list = pg.event.get()
+        text=('Bem-vindo %s !...Você está na sala: %s ' %(nome[0],sala[0]))
+        
+        title = font_title.render(text, False, BABYBLUE)
+        screen.blit(title,(350,30))
 
         for event in event_list:
             # botoes do teclado
