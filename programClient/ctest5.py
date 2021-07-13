@@ -11,9 +11,9 @@ class Server (threading.Thread):
     def run(self):
         self.isRunning = True
         while self.isRunning:
-            if self.socket != None:
-                servmsn = self.socket.recv(2048) # esperando por ate 2048 bytes...
-                messageType, messageBody = servmsn.decode()
+            servmsn = self.socket.recv(2048) # esperando por ate 2048 bytes...
+            #messageType, messageBody = servmsn.decode()
+            print("Resposta do servidor  while 2:" ,servmsn.decode())
 
 
 server = Server()
@@ -36,7 +36,7 @@ while True:
 
     
     servmsn =  s.recv(1024)
-    print("Resposta do servidor:" ,servmsn.decode())
+    print("Resposta do servidor while 1:" ,servmsn.decode())
 
     nome = input()
 
