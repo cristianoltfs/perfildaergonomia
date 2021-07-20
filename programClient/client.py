@@ -2,8 +2,8 @@ import socket
 import threading
 import traceback
 
-#HOSTPORT = ('200.239.167.212', 12000)
-HOSTPORT = ('localhost', 12000)
+HOSTPORT = ('200.239.165.217', 12000)
+#HOSTPORT = ('localhost', 12000)
 
 # encode/decode mensanges para o servidor
 def messageDecode(data):

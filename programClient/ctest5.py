@@ -29,7 +29,7 @@ print('Digite a sua sala:')
 sala = input()
 s.sendall(str.encode(sala))
 
-server.start()
+#server.start()
 
 
 while True:
