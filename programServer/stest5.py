@@ -41,8 +41,8 @@ class Cliente(threading.Thread):
             print ("Mensagem do cliente: ", msg)
             #self.csocket.sendall(bytes(msg,'UTF-8'))
             
-            for cli_address in clients:
-                clients[cli_address].csocket.sendall(msg.encode())
+#            for cli_address in clients:
+#                clients[cli_address].csocket.sendall(msg.encode())
                 
         print ("Cliente ", cli_address , " desconectado!")
 
@@ -57,6 +57,5 @@ while True:
     cliente = Cliente(cli_address, cli_socket)
     cliente.start()
     clients[cli_address] = cliente
-
 
 s.close()
