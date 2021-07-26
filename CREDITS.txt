@@ -1,2 +1,6 @@
 Thanks to creators of python and pygame - without their work this program would never exist.
 Thanks to everyone sending various bug reports and fixes.
+
+https://blog.devgenius.io/how-to-create-chat-room-using-python-b3abce48576f
+https://morioh.com/p/83032fceecad
+https://python.plainenglish.io/building-a-messaging-app-with-python-sockets-and-threads-1c110fc1c8c8
