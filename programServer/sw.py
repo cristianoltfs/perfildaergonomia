@@ -52,9 +52,8 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                     else :
                         message = 'kika'
                     # PARAMOS AQUI
-                    # CONSERTAR PARA PASSAR DO SELF
-                    # NÃO ESTÁ PASSANDO DO SELF
-                        self.address.sendMessage(messageType, message)
+                    # ENVIAR MENSAGEM PRA QUEM ESTÁ NA MESMA SALA
+                        self.socket.send(messageEncode(messageType, message))
                         clients.pop(self.address)
                         print('Kika', clients)
                         break
@@ -84,6 +83,10 @@ class Client(threading.Thread): # esta classe herda da classe Thread
             clients.pop(self.address)
         
     # envia mensagem para todos os clientes
+    # ENVIAR MENSAGEM PRA QUEM ESTÁ NA MESMA SALA
+    # VER A SALA DO CLIENTE E ENVIAR PRA TODOS QUE TEM A MESMA SALA
+    # VARRER TODOS CLIENTES
+    # CLASSE.NUSALA E VERIRICAR SE É IGUAL AO CLIENTE CORRENTE
     def broadcast(self, messageType, message):
         for address in clients:
             clients[address].sendMessage(messageType, message)
