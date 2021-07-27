@@ -2,7 +2,7 @@ import socket
 import threading
 import traceback
 
-HOSTPORT = ('200.239.165.217', 12000)
+HOSTPORT = ('200.239.165.217', 17004)
 #HOSTPORT = ('localhost', 12000)
 
 # encode/decode mensanges para o servidor
@@ -31,7 +31,7 @@ class Server (threading.Thread):
         while self.isRunning:
             data = self.socket.recv(2048) # esperando por ate 2048 bytes...
             messageType, messageBody = messageDecode(data)
-            
+
             # a decodificacao e feita por meio do 'messageType'
             if messageType == 1: # mensagem
                 print(messageBody)
@@ -56,6 +56,11 @@ if "." in username:
 usernamenroom = username + '.' + nroom
 
 server.send(messageEncode(1, usernamenroom))
+
+data = server.socket.recv(2048) # esperando por ate 2048 bytes...
+messageType, messageBody = messageDecode(data)
+if messageBody == 'kika':
+    server.closeServer()
 
 print('Entrando...')
 

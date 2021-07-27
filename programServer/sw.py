@@ -2,10 +2,13 @@ import socket
 import threading
 import traceback
 
-ip = 'localhost' # coloca o ip do servidor aqui
-port = 12000
+ip = '200.239.165.217' # coloca o ip do servidor aqui
+port = 17001
 
 clients = {}
+
+# guardar quantas pessoas tem em cada sala
+sala = [0]*100
 
 # encode/decode mensanges para o servidor
 def messageDecode(data):
@@ -38,10 +41,17 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                 
                 # a decodificacao e feita por meio do 'messageType'
                 if messageType == 1: # login
-                    temp = messageBody.splilt(".")
+                    temp = messageBody.split(".")
                     self.username = temp[0]
                     self.numsala = temp[1]
                     self.broadcast(1, self.username + ' entrou na sala ' + self.numsala)
+                    
+                    if sala[int(self.numsala)-1] < 8:
+                        sala[int(self.numsala)-1] += 1
+                        print(f'Você é a pessoa número: {sala[int(self.numsala)-1]}' )
+                    else :
+                        message = 'kika'
+                        sendMessage(messageType, message)
 
 
                 elif messageType == 2: # mensagem
@@ -51,6 +61,7 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                 elif messageType == 3: # logout
                     clients.pop(self.address)
                     self.broadcast(1, self.username + ' saiu')
+                    sala[int(self.numsala)-1] -= 1
                     break
             except Exception as e:
                 print(traceback.format_exc())
