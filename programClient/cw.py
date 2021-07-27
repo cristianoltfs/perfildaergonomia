@@ -48,8 +48,14 @@ server.connectServer(HOSTPORT[0], HOSTPORT[1])
 server.start()
 
 username = input('Digite seu nome: ')
+nroom = input('Digite o número da sala: ')
 
-server.send(messageEncode(1, username))
+if "." in username:
+    username = username.replace(".","")
+
+usernamenroom = username + '.' + nroom
+
+server.send(messageEncode(1, usernamenroom))
 
 print('Entrando...')
 

@@ -25,6 +25,7 @@ class Client(threading.Thread): # esta classe herda da classe Thread
         self.username = None
         self.address = address
         self.socket = socket
+        self.nsala = None
         
     def run(self): # futuramente aqui será responsável por decodificar as mensagens de um cliente
         print('Client ' + self.address + ' se conectou')
@@ -37,10 +38,16 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                 
                 # a decodificacao e feita por meio do 'messageType'
                 if messageType == 1: # login
-                    self.username = messageBody
-                    self.broadcast(1, self.username + ' entrou')
+                    temp = messageBody.splilt(".")
+                    self.username = temp[0]
+                    self.numsala = temp[1]
+                    self.broadcast(1, self.username + ' entrou na sala ' + self.numsala)
+
+
                 elif messageType == 2: # mensagem
                     self.broadcast(1, self.username + ': ' + messageBody)
+
+
                 elif messageType == 3: # logout
                     clients.pop(self.address)
                     self.broadcast(1, self.username + ' saiu')
