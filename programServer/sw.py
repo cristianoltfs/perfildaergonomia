@@ -3,7 +3,7 @@ import threading
 import traceback
 
 ip = '200.239.165.217' # coloca o ip do servidor aqui
-port = 17001
+port = 17010
 
 clients = {}
 
@@ -46,12 +46,18 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                     self.numsala = temp[1]
                     self.broadcast(1, self.username + ' entrou na sala ' + self.numsala)
                     
-                    if sala[int(self.numsala)-1] < 8:
+                    if sala[int(self.numsala)-1] < 4:
                         sala[int(self.numsala)-1] += 1
                         print(f'Você é a pessoa número: {sala[int(self.numsala)-1]}' )
                     else :
                         message = 'kika'
-                        sendMessage(messageType, message)
+                    # PARAMOS AQUI
+                    # CONSERTAR PARA PASSAR DO SELF
+                    # NÃO ESTÁ PASSANDO DO SELF
+                        self.address.sendMessage(messageType, message)
+                        clients.pop(self.address)
+                        print('Kika', clients)
+                        break
 
 
                 elif messageType == 2: # mensagem
@@ -63,11 +69,13 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                     self.broadcast(1, self.username + ' saiu')
                     sala[int(self.numsala)-1] -= 1
                     break
+
+
             except Exception as e:
                 print(traceback.format_exc())
                 break
                 
-        print('Client ' + self.address + ' saiu')
+        print('Client end *** ' + self.address + ' saiu')
                     
     def sendMessage(self, messageType, message):
         try:
