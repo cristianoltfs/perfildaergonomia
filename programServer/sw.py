@@ -43,12 +43,12 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                 if messageType == 1: # login
                     temp = messageBody.split(".")
                     self.username = temp[0]
-                    self.numsala = temp[1]
+                    self.numsala = int(temp[1])
                     self.broadcast(1, self.username + ' entrou na sala ' + self.numsala)
                     
-                    if sala[int(self.numsala)-1] < 4:
-                        sala[int(self.numsala)-1] += 1
-                        print(f'Você é a pessoa número: {sala[int(self.numsala)-1]}' )
+                    if sala[self.numsala - 1] < 4:
+                        sala[self.numsala - 1] += 1
+                        print(f'Você é a pessoa número: {sala[self.numsala - 1]}' )
                     else :
                         message = 'kika'
                     # PARAMOS AQUI
@@ -59,7 +59,7 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                         break
 
 
-                elif messageType == 2: # mensagem
+                elif messageType == 2 and sala[self.numsala] and a: # mensagem
                     self.broadcast(1, self.username + ': ' + messageBody)
 
 
