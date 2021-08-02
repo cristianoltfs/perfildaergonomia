@@ -2,8 +2,9 @@ import socket
 import threading
 import traceback
 
-ip = '200.239.165.217' # coloca o ip do servidor aqui
-port = 17010
+#ip = '200.239.165.217' # coloca o ip do servidor aqui
+ip = 'localhost'
+port = 12000
 
 clients = {}
 

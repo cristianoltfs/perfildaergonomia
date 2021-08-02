@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox
 from Template.room import Ui_room
+from cw2 import cw
 
 class login(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -20,7 +21,7 @@ class login(QMainWindow):
         elif nick == "":
             QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um nickname válido.")
         else:
-            pass
+            cw(nick, room)
 
 
     def end(self):
