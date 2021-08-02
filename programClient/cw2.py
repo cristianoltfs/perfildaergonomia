@@ -2,9 +2,8 @@ import socket
 import threading
 import traceback
 import loop_players as lp
-
 def cw(name_player,room):    
-    HOSTPORT = ('200.239.165.217', 12000)
+    HOSTPORT = ('200.239.165.217', 17010)
     #HOSTPORT = ('localhost', 12000)
     
     # encode/decode mensanges para o servidor
@@ -33,7 +32,7 @@ def cw(name_player,room):
             while self.isRunning:
                 data = self.socket.recv(2048) # esperando por ate 2048 bytes...
                 messageType, messageBody = messageDecode(data)
-                
+    
                 # a decodificacao e feita por meio do 'messageType'
                 if messageType == 1: # mensagem
                     print(messageBody)
@@ -49,13 +48,25 @@ def cw(name_player,room):
     server.connectServer(HOSTPORT[0], HOSTPORT[1])
     server.start()
     
-    #username = input('Digite seu nome: ')
+    username = name_player
+    nroom = room
     
-    server.send(messageEncode(1, name_player))
-    server.send(messageEncode(1, room))
+    if "." in username:
+        username = username.replace(".","")
+    
+    usernamenroom = username + '.' + nroom
+    
+    server.send(messageEncode(1, usernamenroom))
+    
+    data = server.socket.recv(2048) # esperando por ate 2048 bytes...
+    messageType, messageBody = messageDecode(data)
+    if messageBody == 'kika':
+        server.closeServer()
+
+    print('Entrando...')
     lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
-    
-    '''
+
+    '''        
     while True:
         try:
             msg = input('Digite a mensagem: ')
@@ -66,7 +77,6 @@ def cw(name_player,room):
                 
         except Exception as e:
             print(traceback.format_exc())
-        
+    '''   
     server.closeServer()
     server.join()
-   '''
