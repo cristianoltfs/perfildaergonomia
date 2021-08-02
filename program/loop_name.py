@@ -3,7 +3,7 @@ import draw_window as dw
 import loop_board as lb
 from pygame import gfxdraw
 import loop_players as lp
-
+import cw2 as cw
 def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off):
     pg.init()
     room=list(range(1,101))
@@ -147,8 +147,8 @@ def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, 
             
             screen.blit(text_surface,(input_rect.x + 5,input_rect.y))
             if ok:
-               
-                lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
+                cw.cw(name_player,room)
+                #lp.loop_players(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, WIDTH, HEIGHT, sound_on, sound_off)
                 #numero da sala
             if event.type == pg.KEYDOWN:
                 if active_2:
@@ -159,10 +159,12 @@ def loop_name(FPS, screen, WHITE, BLACK, BABYBLUE, BLUE, DARKBLUE, BORDERWIDTH, 
                         arquivo_2 = open('sala.txt', 'a')
                         arquivo_2.truncate(0)                        
                         arquivo_2.writelines(user_text_2)
-                        arquivo_2.close()                          
+                        arquivo_2.close() 
+                         
                         user_text_2 = ''
                         
                         botton_click_sound.play()
+                       #rodar o motor
                        
                         
                         

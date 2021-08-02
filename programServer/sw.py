@@ -29,6 +29,7 @@ class Client(threading.Thread): # esta classe herda da classe Thread
         self.address = address
         self.socket = socket
         self.nsala = None
+        self.usercurrent = 0 # o jogador da vez, corrente, vai receber 1
         
     def run(self): # futuramente aqui será responsável por decodificar as mensagens de um cliente
         print('Client ' + self.address + ' se conectou')
