@@ -3,10 +3,10 @@ import threading
 import traceback
 
 
-def cw(username, nroom):
+def cwf(username, nroom):
 
-#    HOSTPORT = ('200.239.165.217', 17010)
-    HOSTPORT = ('localhost', 12000)
+    HOSTPORT = ('200.239.165.217', 17012)
+#    HOSTPORT = ('localhost', 12000)
 
     # encode/decode mensanges para o servidor
     def messageDecode(data):

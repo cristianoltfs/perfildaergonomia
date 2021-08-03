@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox
 from Template.room import Ui_room
 #from cw2 import cw
-from cw import cw
+from cwf import cwf
 
 class login(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -23,7 +23,7 @@ class login(QMainWindow):
             QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um nickname válido.")
         else:
             self.close()
-            cw(nick, room)
+            cwf(nick, room)
 
 
     def end(self):

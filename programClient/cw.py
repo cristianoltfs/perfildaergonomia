@@ -4,7 +4,7 @@ import traceback
 
 
 
-HOSTPORT = ('200.239.165.217', 17011)
+HOSTPORT = ('200.239.165.217', 17012)
 #HOSTPORT = ('localhost', 12000)
 
 # encode/decode mensanges para o servidor
