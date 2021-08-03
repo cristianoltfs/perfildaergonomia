@@ -2,9 +2,8 @@ import socket
 import threading
 import traceback
 
-#ip = '200.239.165.217' # coloca o ip do servidor aqui
-ip = 'localhost'
-port = 12000
+ip = '200.239.165.217' # coloca o ip do servidor aqui
+port = 17010
 
 clients = {}
 
@@ -30,7 +29,6 @@ class Client(threading.Thread): # esta classe herda da classe Thread
         self.address = address
         self.socket = socket
         self.nsala = None
-        self.usercurrent = 0 # o jogador da vez, corrente, vai receber 1
         
     def run(self): # futuramente aqui será responsável por decodificar as mensagens de um cliente
         print('Client ' + self.address + ' se conectou')
@@ -45,23 +43,24 @@ class Client(threading.Thread): # esta classe herda da classe Thread
                 if messageType == 1: # login
                     temp = messageBody.split(".")
                     self.username = temp[0]
-                    self.numsala = int(temp[1])
+                    self.numsala = temp[1]
                     self.broadcast(1, self.username + ' entrou na sala ' + self.numsala)
                     
-                    if sala[self.numsala - 1] < 4:
-                        sala[self.numsala - 1] += 1
-                        print(f'Você é a pessoa número: {sala[self.numsala - 1]}' )
+                    if sala[int(self.numsala)-1] < 4:
+                        sala[int(self.numsala)-1] += 1
+                        print(f'Você é a pessoa número: {sala[int(self.numsala)-1]}' )
                     else :
                         message = 'kika'
                     # PARAMOS AQUI
-                    # ENVIAR MENSAGEM PRA QUEM ESTÁ NA MESMA SALA
+                    # CONSERTAR PARA PASSAR DO SELF
+                    # NÃO ESTÁ PASSANDO DO SELF
                         self.socket.send(messageEncode(messageType, message))
                         clients.pop(self.address)
                         print('Kika', clients)
                         break
 
 
-                elif messageType == 2 and sala[self.numsala] and a: # mensagem
+                elif messageType == 2: # mensagem
                     self.broadcast(1, self.username + ': ' + messageBody)
 
 
@@ -85,10 +84,6 @@ class Client(threading.Thread): # esta classe herda da classe Thread
             clients.pop(self.address)
         
     # envia mensagem para todos os clientes
-    # ENVIAR MENSAGEM PRA QUEM ESTÁ NA MESMA SALA
-    # VER A SALA DO CLIENTE E ENVIAR PRA TODOS QUE TEM A MESMA SALA
-    # VARRER TODOS CLIENTES
-    # CLASSE.NUSALA E VERIRICAR SE É IGUAL AO CLIENTE CORRENTE
     def broadcast(self, messageType, message):
         for address in clients:
             clients[address].sendMessage(messageType, message)
