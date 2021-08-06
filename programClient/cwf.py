@@ -5,6 +5,20 @@ import traceback
 
 def cwf(username, nroom):
 
+
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # Aqui entra a chamada da tela 2
+    # CRIAR UMA FUNÇÃO PARA CHAMAR A JANELA 2
+
+
+
     HOSTPORT = ('200.239.165.217', 17012)
 #    HOSTPORT = ('localhost', 12000)
 
@@ -69,6 +83,13 @@ def cwf(username, nroom):
 
     while True:
         try:
+
+
+#            Escolher tipo de carta
+#            Escolher tipo de carta
+#            Escolher tipo de carta
+#           Variável de 1 à 4 relacionando ao botão do tipo da carta
+
             msg = input('Digite a mensagem: ')
             if msg == 'sair':
                 server.send(messageEncode(3, msg))
