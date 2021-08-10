@@ -70,7 +70,7 @@ while menu:
         title=font_title.render('Seja bem vindo ao Perfil da ergonomia! Um jogo criado dentro da UFOP!',False, white2)
         sub_title=font_title.render('Colaboradores: José da Silva, Aline Santos, Joana Smith, Fabricio',False,white2)
 
-        if selected=="start":
+        if selected == "start":
             
             text_start=font_menu.render('Iniciar',True, white)
             

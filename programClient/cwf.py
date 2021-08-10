@@ -1,21 +1,18 @@
 import socket
 import threading
 import traceback
-
+from PyQt5.QtWidgets import *
+from tela2 import Ui_tela2
+import sys
 
 def cwf(username, nroom):
 
+    class tela2(QDialog):
+        def __init__(self, *args, **kwargs):
+            super(tela2, self).__init__(*args, **kwargs)
+            self.ui = Ui_tela2()
+            self.ui.setupUi(self)
 
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # Aqui entra a chamada da tela 2
-    # CRIAR UMA FUNÇÃO PARA CHAMAR A JANELA 2
 
 
 
@@ -59,6 +56,8 @@ def cwf(username, nroom):
         def closeServer(self):
             self.isRunning = False
 
+
+
     server = Server()
 
     server.connectServer(HOSTPORT[0], HOSTPORT[1])
@@ -73,6 +72,13 @@ def cwf(username, nroom):
     usernamenroom = username + '.' + nroom
 
     server.send(messageEncode(1, usernamenroom))
+
+    # Chama a janela 2
+    app = QApplication(sys.argv)
+    if (QDialog.Accepted == True):
+        janela = tela2()
+        janela.show()
+    sys.exit(app.exec_())
 
     data = server.socket.recv(2048) # esperando por ate 2048 bytes...
     messageType, messageBody = messageDecode(data)
@@ -101,3 +107,4 @@ def cwf(username, nroom):
         
     server.closeServer()
     server.join()
+
