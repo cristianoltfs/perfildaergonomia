@@ -5,19 +5,22 @@ from PyQt5.QtWidgets import *
 from tela2 import Ui_tela2
 import sys
 
+
+class tela2(QDialog):
+    def __init__(self, *args, **kwargs):
+        super(tela2, self).__init__(*args, **kwargs)
+        self.ui = Ui_tela2()
+        self.ui.setupUi(self)
+
+
+
+
 def cwf(username, nroom):
 
-    class tela2(QDialog):
-        def __init__(self, *args, **kwargs):
-            super(tela2, self).__init__(*args, **kwargs)
-            self.ui = Ui_tela2()
-            self.ui.setupUi(self)
 
 
-
-
-    HOSTPORT = ('200.239.165.217', 17012)
-#    HOSTPORT = ('localhost', 12000)
+    #HOSTPORT = ('200.239.165.217', 17012)
+    HOSTPORT = ('localhost', 12000)
 
     # encode/decode mensanges para o servidor
     def messageDecode(data):

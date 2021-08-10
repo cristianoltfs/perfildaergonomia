@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
 
 
 class Ui_tela2(object):
@@ -216,11 +217,3 @@ class Ui_tela2(object):
         self.btn_dica_12.setText(_translate("tela2", "D12"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    tela2 = QtWidgets.QDialog()
-    ui = Ui_tela2()
-    ui.setupUi(tela2)
-    tela2.show()
-    sys.exit(app.exec_())
