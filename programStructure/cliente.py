@@ -76,10 +76,6 @@ class Cliente:
                 mensagem = self.s.recv(1024).decode('utf-8')
                 if mensagem == 'APELIDO':
                     self.s.send(self.apelido.encode('utf-8'))
-                elif mensagem == 'SENHA':
-                    self.s.send(self.senha.encode('utf-8'))
-                elif mensagem == 'WRONG':
-                    self.parar()
                 else:
                     if self.igu_feito:
                         self.area_texto.config(state='normal')
