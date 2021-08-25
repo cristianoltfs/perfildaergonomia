@@ -2,7 +2,8 @@ import socket
 import threading
 
 # Detalhes do servidor
-HOST = '200.239.165.217'
+#HOST = '200.239.165.217'
+HOST = 'localhost'
 PORT = 8000
 
 # Iniciar o servidor

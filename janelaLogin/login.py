@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox
 from Template.room import Ui_room
-from cw2 import cw
+
 
 class login(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -11,17 +11,10 @@ class login(QMainWindow):
         self.ui.btnLogin.clicked.connect(self.logar)
         self.ui.btnClose.clicked.connect(self.end)
 
-
     def logar(self):
         nick = self.ui.leNickName.text()
-        room = self.ui.leRoom.text()
-
-        if not room.isnumeric() or room == "" or int(room) > 100:
-            QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um valor inteiro entre 1 e 100 para a sala.")
-        elif nick == "":
+        if nick == "":
             QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um nickname válido.")
-        else:
-            cw(nick, room)
 
 
     def end(self):
