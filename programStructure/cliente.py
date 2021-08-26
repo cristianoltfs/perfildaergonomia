@@ -2,6 +2,7 @@ import socket
 import threading
 import tkinter
 import tkinter.scrolledtext
+from tabuleiro import Tabuleiro
 from tkinter import simpledialog
 
 #HOST = '200.239.165.217'
@@ -14,20 +15,14 @@ class Cliente:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((HOST, PORT))
         self.apelido = apelido
-        #login = tkinter.Tk()
-        #login.withdraw()
-
-        #self.apelido = simpledialog.askstring("O Mensageiro", "Escolha um apelido", parent=login) #initialvalue="Apelido")
-        #self.senha = simpledialog.askstring("O Mensageiro", "Escolha uma senha", parent=login)
-        #self.igu_feito = False
-        #self.rodando = True
 
         igu_thread = threading.Thread(target=self.igu_loop)
         receive_thread = threading.Thread(target=self.receive)
 
         igu_thread.start()
         receive_thread.start()
-
+        frmTabuleiro = Tabuleiro()
+        frmTabuleiro.exec_()
     def igu_loop(self):
 
         self.janela = tkinter.Tk()

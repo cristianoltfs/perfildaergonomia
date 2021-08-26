@@ -20,6 +20,7 @@ class Login(QMainWindow):
         if nick == "":
             QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um nickname válido.")
         else:
+            self.close()
             cliente = Cliente(HOST, PORT, nick)
 
 
