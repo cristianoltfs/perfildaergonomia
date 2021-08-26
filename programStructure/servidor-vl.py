@@ -59,18 +59,13 @@ def receive():
         cliente.send('APELIDO'.encode('utf-8'))
         apelido = cliente.recv(1024)
 
-
-        #cliente.send('SENHA'.encode('utf-8'))
-        #senha = cliente.recv(1024)
-        
-        #if verificaLogin(apelido, senha):
         apelidos.append(apelido)
         clientes.append(cliente)
         dic[apelido] = cliente
         i = cliente
 
         print(f"O apelido do cliente é {apelido}")
-        #print(f"A senha do cliente é {senha}")
+
         broadcast((f'{apelido} está conectado ao servidor!'.encode('utf-8')), i, apelidos, dic)
         cliente.send("Conectado ao servidor".encode('utf-8'))
         t = threading.Thread(target=handle, args=(cliente,))
@@ -79,18 +74,6 @@ def receive():
             #cliente.send('WRONG'.encode('utf-8'))
             #cliente.close()"""
         
-
-"""def verificaLogin(apelido, senha):
-    verf = False
-    with open('Users.txt', 'r') as userst:
-        users = userst.readlines()
-        users = list(map(lambda x: x.replace('\n', ''), users))
-        #print(users)
-        for i in range(0, len(users) - 1, 2):
-            print(f'Usuário {i}: {users[i]}\nSenha {i}: {users[i + 1]}')
-            if str(apelido) == users[i] and str(senha) == users[i + 1]:
-                verf = True
-        return verf"""
 
 print("Servidor rodando...")
 receive() 
