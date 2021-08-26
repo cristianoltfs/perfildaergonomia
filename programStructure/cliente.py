@@ -10,10 +10,10 @@ PORT = 8000
 
 
 class Cliente:
-    def __init__(self, HOST, PORT):
+    def __init__(self, HOST, PORT, apelido):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((HOST, PORT))
-
+        self.apelido = apelido
         #login = tkinter.Tk()
         #login.withdraw()
 
