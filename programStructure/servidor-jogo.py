@@ -4,7 +4,11 @@ import pandas as pd
 from random import sample
 
 #HOST = '200.239.165.217'
+<<<<<<< HEAD
 HOST = 'localhost'
+=======
+HOST='localhost'
+>>>>>>> b61b5b99550e4094fc43ea2348d522a7af1f9ebb
 PORT = 8000
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
@@ -16,7 +20,11 @@ apelidos = []
 #armazenar apelido e enderço dos clientes
 dic = {}
 #sorteio cartas
+<<<<<<< HEAD
 cartas = pd.read_csv('cartas.csv',sep=';')
+=======
+cartas=pd.read_csv('cartas.csv',sep=';')
+>>>>>>> b61b5b99550e4094fc43ea2348d522a7af1f9ebb
 sorteio = sample(range(0, 108), 108)
 
 #criar relação para armazenar o clique no tira-cartas
@@ -69,8 +77,12 @@ def handle(cliente):
                 clique(ordem) #gravando a ordem no csv
                 #colocar gravação de arquivo aqui
                 cliente.send(tiracarta(ordem).encode('utf-8'))
+<<<<<<< HEAD
                 print('aaaa')
 
+=======
+                print('teste')
+>>>>>>> b61b5b99550e4094fc43ea2348d522a7af1f9ebb
         except:
             index = clientes.index(cliente)
             clientes.remove(cliente)

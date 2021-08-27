@@ -14,8 +14,8 @@ class Cliente:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((HOST, PORT))
 
-        #login = tkinter.Tk()
-        #login.withdraw()
+        login = tkinter.Tk()
+        login.withdraw()
 
         self.apelido = simpledialog.askstring("O Mensageiro", "Escolha um apelido", parent=login) #initialvalue="Apelido")
         #self.senha = simpledialog.askstring("O Mensageiro", "Escolha uma senha", parent=login)
