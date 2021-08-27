@@ -81,7 +81,7 @@ def receive():
         apelidos.append(apelido)
         clientes.append(cliente)
         dic[apelido]=cliente
-        #i=cliente
+        i=cliente
         print(f"O apelido do cliente é {apelido}")
         broadcast((f'{apelido} ´ conectado ao servidor!'.encode('utf-8')),i,apelidos,dic)
         cliente.send("Conectado ao servidor".encode('utf-8'))
