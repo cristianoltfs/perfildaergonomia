@@ -15,7 +15,8 @@ class Cliente:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((HOST, PORT))
         self.apelido = apelido
-
+        self.igu_feito = False
+        self.rodando = True
         igu_thread = threading.Thread(target=self.igu_loop)
         receive_thread = threading.Thread(target=self.receive)
 

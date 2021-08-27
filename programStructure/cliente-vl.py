@@ -17,10 +17,10 @@ class Cliente:
         #login = tkinter.Tk()
         #login.withdraw()
 
-        #self.apelido = simpledialog.askstring("O Mensageiro", "Escolha um apelido", parent=login) #initialvalue="Apelido")
+        self.apelido = simpledialog.askstring("O Mensageiro", "Escolha um apelido", parent=login) #initialvalue="Apelido")
         #self.senha = simpledialog.askstring("O Mensageiro", "Escolha uma senha", parent=login)
-        #self.igu_feito = False
-        #self.rodando = True
+        self.igu_feito = False
+        self.rodando = True
 
         igu_thread = threading.Thread(target=self.igu_loop)
         receive_thread = threading.Thread(target=self.receive)
