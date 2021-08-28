@@ -4,11 +4,8 @@ import pandas as pd
 from random import sample
 
 #HOST = '200.239.165.217'
-<<<<<<< HEAD
 HOST = 'localhost'
-=======
-HOST='localhost'
->>>>>>> b61b5b99550e4094fc43ea2348d522a7af1f9ebb
+
 PORT = 8000
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
@@ -20,11 +17,8 @@ apelidos = []
 #armazenar apelido e enderço dos clientes
 dic = {}
 #sorteio cartas
-<<<<<<< HEAD
+
 cartas = pd.read_csv('cartas.csv',sep=';')
-=======
-cartas=pd.read_csv('cartas.csv',sep=';')
->>>>>>> b61b5b99550e4094fc43ea2348d522a7af1f9ebb
 sorteio = sample(range(0, 108), 108)
 
 #criar relação para armazenar o clique no tira-cartas
@@ -70,19 +64,14 @@ def handle(cliente):
             msg = mensagem.decode('utf-8')
             msg = msg.split(' ')
             print(msg)
-            if msg[1] == '1\n':
+            if msg[1] == 'TIRACARTA\n':
                 contador = pd.read_csv('contador.csv')
                 ordem = contador.iloc[0][1]
                 ordem = ordem+1
                 clique(ordem) #gravando a ordem no csv
                 #colocar gravação de arquivo aqui
                 cliente.send(tiracarta(ordem).encode('utf-8'))
-<<<<<<< HEAD
-                print('aaaa')
 
-=======
-                print('teste')
->>>>>>> b61b5b99550e4094fc43ea2348d522a7af1f9ebb
         except:
             index = clientes.index(cliente)
             clientes.remove(cliente)
@@ -100,8 +89,8 @@ def receive():
         apelido = cliente.recv(1024)
         apelidos.append(apelido)
         clientes.append(cliente)
-        dic[apelido]=cliente
-        i=cliente
+        dic[apelido] = cliente
+        i = cliente
         print(f"O apelido do cliente é {apelido}")
         broadcast((f'{apelido} ´ conectado ao servidor!'.encode('utf-8')), i, apelidos, dic)
         cliente.send("Conectado ao servidor".encode('utf-8'))
