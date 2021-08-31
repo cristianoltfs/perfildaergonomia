@@ -3,8 +3,8 @@ import threading
 import pandas as pd
 from random import sample
 import _pickle as cPickle
-HOST = '200.239.165.217'
-#HOST = 'localhost'
+#HOST = '200.239.165.217'
+HOST = 'localhost'
 
 PORT = 8000
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

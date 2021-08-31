@@ -2,7 +2,7 @@ import socket
 import threading
 import tkinter
 import tkinter.scrolledtext
-from tabuleiro import Tabuleiro
+#from tabuleiro import Tabuleiro
 from tkinter import simpledialog
 
 #HOST = '200.239.165.217'
@@ -22,8 +22,7 @@ class Cliente:
 
         igu_thread.start()
         receive_thread.start()
-        frmTabuleiro = Tabuleiro()
-        frmTabuleiro.exec_()
+
     def igu_loop(self):
 
         self.janela = tkinter.Tk()
@@ -54,6 +53,11 @@ class Cliente:
         self.janela.protocol("WM_DELETE_WINDOW", self.parar)
 
         self.janela.mainloop()
+
+    def carta(self):
+        mensagem = f'{self.apelido}:{"TIRACARTA"}'
+        self.s.send(mensagem.encode('utf-8'))
+
 
     def write(self):
         mensagem = f"{self.apelido}: {self.area_input.get('1.0', 'end')}"
