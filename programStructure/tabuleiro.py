@@ -15,4 +15,6 @@ class Tabuleiro(QDialog):
 
     def tiraCarta(self):
         self.player.carta()
+        #Ler a carta
+        #Imprimir a carta na tela carta
 
