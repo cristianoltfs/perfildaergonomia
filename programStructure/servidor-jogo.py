@@ -12,7 +12,6 @@ s.bind((HOST, PORT))
 s.listen()
 clientes = []
 apelidos = []
-# Armazenar apelido e enderço dos clientes
 dic = {}
 cartas = pd.read_csv('cartas.csv', sep= ';')
 sorteio = sample(range(0, 108), 108)
@@ -26,7 +25,6 @@ contagem_clique(0)
 
 
 def tira_carta(contador,cliente):
-    # Abrir relação, somar +1, pegar o resultado e inserir como index da lista sorteio
     carta = cartas.loc[sorteio[contador]]
     carta_bits = cPickle.dumps(carta)
     print(carta)
@@ -77,7 +75,6 @@ def cabo_cliente(cliente):
             cliente.close()
             apelido = apelidos[indice]
             apelidos.remove(apelido)
-            
             break
 
 

@@ -6,10 +6,10 @@ class cliente():
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.connect((HOST, PORT))
         self.apelido = apelido
-        igu_thread = threading.Thread(target=self.enviar_mensagem)
-        receive_thread = threading.Thread(target=self.receber_mensagem)
-        igu_thread.start()
-        receive_thread.start()
+        envio_thread = threading.Thread(target=self.enviar_mensagem)
+        receber_thread = threading.Thread(target=self.receber_mensagem)
+        envio_thread.start()
+        receber_thread.start()
         
         
     def carta(self):
