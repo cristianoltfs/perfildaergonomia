@@ -67,7 +67,7 @@ def cabo_cliente(cliente):
                 contador = pd.read_csv('contador.csv')
                 ordem = contador.iloc[0][1]
                 ordem = ordem+1
-                contagem_clique(ordem) #gravando a ordem no csv
+                contagem_clique(ordem)
                 tira_carta(ordem, cliente)
                 print("Carta enviada com sucesso!")
                 

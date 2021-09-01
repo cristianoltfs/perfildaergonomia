@@ -1,6 +1,6 @@
 from Template.perfildaergonomia import Ui_PerfilErgonomia
 from PyQt5.QtWidgets import *
-from cliente import Cliente
+from cliente_sem_janela import cliente
 
 HOST = 'localhost'
 PORT = 8000
@@ -11,7 +11,7 @@ class Tabuleiro(QDialog):
         self.ui = Ui_PerfilErgonomia()
         self.ui.setupUi(self)
         self.ui.btnCarta_2.clicked.connect(self.tiraCarta)
-        self.player = Cliente(HOST, PORT, nick)
+        self.player = cliente(HOST, PORT, nick)
 
     def tiraCarta(self):
         self.player.carta()

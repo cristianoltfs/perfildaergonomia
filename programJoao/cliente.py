@@ -24,9 +24,9 @@ class Cliente:
         receive_thread.start()
 
     def igu_loop(self):
-
+        
         self.janela = tkinter.Tk()
-        self.janela.title("O Mensageiro")
+        self.janela.title("O Mensageiro999")
         self.janela['bg'] = "lightgrey"
 
         self.chat_label = tkinter.Label(self.janela, text='Chat:', bg='lightgrey')
@@ -53,7 +53,7 @@ class Cliente:
         self.janela.protocol("WM_DELETE_WINDOW", self.parar)
 
         self.janela.mainloop()
-
+        
     def carta(self):
         mensagem = f'{self.apelido}:{"TIRACARTA"}'
         self.s.send(mensagem.encode('utf-8'))
