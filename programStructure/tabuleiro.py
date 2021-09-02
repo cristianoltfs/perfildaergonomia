@@ -2,6 +2,7 @@ from Template.perfildaergonomia import Ui_PerfilErgonomia
 from PyQt5.QtWidgets import *
 from cliente_sem_janela import cliente
 
+
 HOST = 'localhost'
 PORT = 8000
 
@@ -15,6 +16,8 @@ class Tabuleiro(QDialog):
 
     def tiraCarta(self):
         self.player.carta()
+        print(self.player.carta())
+
         #Ler a carta
         #Imprimir a carta na tela carta
 

@@ -1,5 +1,7 @@
 import socket
 import threading
+import _pickle as cPickle
+
 
 class cliente():
     def __init__(self, HOST, PORT, apelido):
@@ -13,9 +15,13 @@ class cliente():
         
         
     def carta(self):
-        mensagem = f'{self.apelido}:{"TIRACARTA"}'
-        self.s.send(mensagem.encode('utf-8'))
-
+        sinal = f'{self.apelido}:{"TIRACARTA"}'
+        self.s.send(sinal.encode('utf-8'))
+        carta = self.s.recv(2048)
+        #decodificar a carta
+        carta_recebida = cPickle.loads(carta)  
+        return(carta_recebida)
+        
 
     def enviar_mensagem(self):
         while True:

@@ -26,7 +26,7 @@ class Cliente:
     def igu_loop(self):
         
         self.janela = tkinter.Tk()
-        self.janela.title("O Mensageiro999")
+        self.janela.title("O Mensageiro")
         self.janela['bg'] = "lightgrey"
 
         self.chat_label = tkinter.Label(self.janela, text='Chat:', bg='lightgrey')

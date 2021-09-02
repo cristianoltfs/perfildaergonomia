@@ -30,7 +30,7 @@ def tira_carta(contador,cliente):
     print(carta)
     print(carta_bits)
     cliente.send(carta_bits)
-    print('ENVIADO')
+    print('*ENVIADO*')
     
     
 def transmitir_mensagem(mensagem,i,apelidos,dic):
