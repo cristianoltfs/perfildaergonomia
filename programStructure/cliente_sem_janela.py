@@ -19,7 +19,7 @@ class cliente():
         self.s.send(sinal.encode('utf-8'))
         carta = self.s.recv(2048)
         #decodificar a carta
-        carta_recebida = cPickle.loads(carta)  
+        carta_recebida = cPickle.loads(carta)
         return(carta_recebida)
         
 
@@ -42,4 +42,3 @@ class cliente():
                 print("An error occured!")
                 self.s.close()
                 break
-            

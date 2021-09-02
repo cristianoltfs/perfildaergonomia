@@ -13,12 +13,12 @@ s.listen()
 clientes = []
 apelidos = []
 dic = {}
-cartas = pd.read_csv('cartas.csv', sep= ';')
+cartas = pd.read_csv('cartas.csv', sep=';')
 sorteio = sample(range(0, 108), 108)
 
 
 def contagem_clique(cont):
-    contador = {'clique':[cont]}
+    contador = {'clique': [cont]}
     contador_csv = pd.DataFrame(contador)
     contador_csv.to_csv('contador.csv')    
 contagem_clique(0)
@@ -39,7 +39,7 @@ def transmitir_mensagem(mensagem,i,apelidos,dic):
     
     for r in apelidos:
         # Codigo de restrição
-        vez = '@'+r.decode('utf-8')
+        vez = '@' + r.decode('utf-8')
 
         if vez in mensagem.decode('utf-8'):
             dic[r].send(mensagem)
@@ -64,7 +64,7 @@ def cabo_cliente(cliente):
             if 'TIRACARTA' in mensagem:
                 contador = pd.read_csv('contador.csv')
                 ordem = contador.iloc[0][1]
-                ordem = ordem+1
+                ordem = ordem + 1
                 contagem_clique(ordem)
                 tira_carta(ordem, cliente)
                 print("Carta enviada com sucesso!")

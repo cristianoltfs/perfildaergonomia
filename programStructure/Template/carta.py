@@ -843,4 +843,4 @@ class Ui_carta(object):
         self.label_16.setText(_translate("carta", "12 - "))
         self.pteDica3_10.setPlainText(_translate("carta", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
         self.btnCarta_2.setText(_translate("carta", "SAIR"))
-from template import img
+from Template import img
