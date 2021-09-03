@@ -24,8 +24,6 @@ class Login(QMainWindow):
             self.close()
             frmTabuleiro = Tabuleiro(nick)
             frmTabuleiro.exec_()
-            
-
 
     def end(self):
         self.close()
