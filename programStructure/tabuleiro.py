@@ -16,8 +16,10 @@ class Tabuleiro(QDialog):
         self.player = cliente(HOST, PORT, nick)
 
     def tiraCarta(self):
-        #print(self.player.carta())
-        carta = self.player.carta()
+        carta_df = self.player.carta()
+        print('!!!!!!!!!!!!!!!!!!!!!')
+        print(self.player.carta())
+        print("*********************")
 
         #Chamando o form da carta
         frmCarta = Carta()
