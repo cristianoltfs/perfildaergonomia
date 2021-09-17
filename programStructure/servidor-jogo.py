@@ -40,7 +40,14 @@ def tira_carta(contador,cliente):
     cliente.send(carta_bits)
     print('*ENVIADO*')
     
-    
+def envio_pontos(cliente):
+    pontos_csv = pd.read_csv('pontuação.csv') #lendo arquivo
+    pontos_bits = cPickle.dumps(pontos_csv)
+    print(pontos_csv)
+    print(pontos_bits)
+    cliente.send(pontos_bits)
+    print('*ENVIADO*')   
+
 def transmitir_mensagem(mensagem,i,apelidos,dic):
     
     restrito = False
@@ -88,7 +95,12 @@ def cabo_cliente(cliente):
                 somar_pontos=list(somar_pontos['pontos'])
                 soma = list(map(lambda v1, v2: v1 + v2, somar_pontos,valores))
                 
-                armazenamento_pontos(soma) #salvando somatorio de pontos               
+                armazenamento_pontos(soma) #chamando funcao/salvando somatorio de pontos               
+       
+             if '98989898355531' in mensagem:     
+                 envio_pontos(cliente)
+        
+            
         except:
             indice = clientes.index(cliente)
             clientes.remove(cliente)

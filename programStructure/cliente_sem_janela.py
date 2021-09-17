@@ -22,6 +22,19 @@ class cliente():
         carta_recebida = cPickle.loads(carta_df)
         return(carta_recebida)
     
+        
+    def visualizar_ranking(self):
+        sinal = '98989898355531'
+        self.s.send(sinal.encode('utf-8'))
+        ranking_df = self.s.recv(4096)
+        #decodificar o df
+        ranking_recebido = cPickle.loads(carta_df)
+        return(ranking_recebido)    
+    
+    
+    
+    
+    
     def enviar_pontos(self,lista_pontos):
         sinal='989898983'
         lista_pontos.append(sinal)
