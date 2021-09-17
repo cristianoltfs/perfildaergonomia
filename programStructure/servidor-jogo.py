@@ -24,6 +24,14 @@ def contagem_clique(cont):
 contagem_clique(0)
 
 
+def armazenamento_pontos(pontuacao):
+    #argumento do tipo list
+    pontos =  {'pontos':pontuacao}
+    pontos_csv =  pd.DataFrame(pontos)
+    pontos_csv.to_csv('pontuação.csv')
+    
+armazenamento_pontos([0,0,0,0,0,0,0,0]) #iniciando arquivo
+
 def tira_carta(contador,cliente):
     carta = cartas.loc[sorteio[contador]]
     carta_bits = cPickle.dumps(carta)
@@ -68,7 +76,19 @@ def cabo_cliente(cliente):
                 contagem_clique(ordem)
                 tira_carta(ordem, cliente)
                 print("Carta enviada com sucesso!")
+            if '989898983' in mensagem:
+                tratamento = mensagem.replace("[", "")
+                tratamento = mensagem.replace("]", "")
+                mensagem_pontos=tratamento.split(',')
+                mensagem_pontos.remove('989898983')   
                 
+                valores = list(map(int, mensagem_pontos)) #converter str to int
+                
+                somar_pontos = pd.read_csv('pontuação.csv') #lendo arquivo
+                somar_pontos=list(somar_pontos['pontos'])
+                soma = list(map(lambda v1, v2: v1 + v2, somar_pontos,valores))
+                
+                armazenamento_pontos(soma) #salvando somatorio de pontos               
         except:
             indice = clientes.index(cliente)
             clientes.remove(cliente)

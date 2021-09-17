@@ -21,6 +21,12 @@ class cliente():
         #decodificar a carta
         carta_recebida = cPickle.loads(carta_df)
         return(carta_recebida)
+    
+    def enviar_pontos(self,lista_pontos):
+        sinal='989898983'
+        lista_pontos.append(sinal)
+        lista_string=str(lista_pontos)
+        self.s.send(sinal.encode('utf-8')) 
         
 
     def enviar_mensagem(self):
