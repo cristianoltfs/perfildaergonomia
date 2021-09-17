@@ -30,10 +30,7 @@ class cliente():
         #decodificar o df
         ranking_recebido = cPickle.loads(carta_df)
         return(ranking_recebido)    
-    
-    
-    
-    
+
     
     def enviar_pontos(self,lista_pontos):
         sinal='989898983'
