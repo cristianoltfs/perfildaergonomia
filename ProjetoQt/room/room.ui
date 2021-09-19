@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>room</class>
+ <widget class="QMainWindow" name="room">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>403</width>
+    <height>198</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>403</width>
+    <height>198</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>403</width>
+    <height>198</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>room</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="img.qrc">
+    <normaloff>:/img/img/ergonomia_logo.png</normaloff>:/img/img/ergonomia_logo.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>25</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>141</width>
+      <height>41</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>141</width>
+      <height>41</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Forte</family>
+      <pointsize>22</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(102,102, 102);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Login&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="leNickName">
+    <property name="geometry">
+     <rect>
+      <x>118</x>
+      <y>80</y>
+      <width>254</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	border: 2px solid rgb(34,63,102);
+	border-radius: 5px;
+	padding: 5px;
+	backgroud-color: rgb(30,30,30);
+	color: rgb(57,57, 253);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(34,63,102);
+}
+
+QLineEdit:focus {
+	border: 2px solid rgb(14,93,213);
+	color: rgb(50, 50, 50);
+}</string>
+    </property>
+    <property name="maxLength">
+     <number>14</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>23</x>
+      <y>80</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	color: rgb(102,102,102);
+}
+
+QLineEdit:hover {
+	color: 2px solid rgb(20,20,253);
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Nickname</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLogin">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>154</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: rgb(220, 220, 220);
+	background-color: rgb(50, 50, 50);
+	border: 2px solid rgb(34,63,102);
+	border-radius: 5px
+}
+
+QPushButton:hover {
+	color: rgb(220, 220, 220);
+	border: 2px solid rgb(34,63,102);
+	border: 2px solid rgb(70,70,70);
+}
+
+QPushButton:pressed {
+	color: rgb(220, 220, 220);
+	background-color: rgb(0, 0, 163);
+	border: 2px solid rgb(34,63,102);
+	border-radius: 5px
+}</string>
+    </property>
+    <property name="text">
+     <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnClose">
+    <property name="geometry">
+     <rect>
+      <x>292</x>
+      <y>154</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: rgb(220, 220, 220);
+	background-color: rgb(50, 50, 50);
+	border: 2px solid rgb(34,63,102);
+	border-radius: 5px
+}
+
+QPushButton:hover {
+	color: rgb(220, 220, 220);
+	border: 2px solid rgb(34,63,102);
+	border: 2px solid rgb(70,70,70);
+}
+
+QPushButton:pressed {
+	color: rgb(220, 220, 220);
+	background-color: rgb(0, 0, 163);
+	border: 2px solid rgb(34,63,102);
+	border-radius: 5px
+}</string>
+    </property>
+    <property name="text">
+     <string>Close</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>-710</x>
+      <y>-180</y>
+      <width>1931</width>
+      <height>951</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/img/img/fundo_jogo_1.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>19</y>
+      <width>381</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+	border: 2px solid rgb(34,63,102);
+	border-radius: 5px;
+}</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+   </widget>
+   <zorder>frame</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>label_2</zorder>
+   <zorder>leNickName</zorder>
+   <zorder>label_3</zorder>
+   <zorder>btnLogin</zorder>
+   <zorder>btnClose</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="img.qrc"/>
+ </resources>
+ <connections/>
+</ui>
