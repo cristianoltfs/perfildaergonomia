@@ -37,7 +37,6 @@ class cliente():
         lista_pontos.append(sinal)
         lista_string = str(lista_pontos)
         self.s.send(lista_string.encode('utf-8'))
-        print(lista_pontos)
 
     def enviar_mensagem(self):
         while True:

@@ -86,15 +86,15 @@ def cabo_cliente(cliente):
             if '989898983' in mensagem:
                 tratamento = mensagem.replace("[", "")
                 tratamento = mensagem.replace("]", "")
-                mensagem_pontos=tratamento.split(',')
+                mensagem_pontos = tratamento.split(',')
                 mensagem_pontos.remove('989898983')   
                 
                 valores = list(map(int, mensagem_pontos)) #converter str to int
                 
                 somar_pontos = pd.read_csv('pontuação.csv') #lendo arquivo
-                somar_pontos=list(somar_pontos['pontos'])
+                somar_pontos = list(somar_pontos['pontos'])
                 soma = list(map(lambda v1, v2: v1 + v2, somar_pontos,valores))
-                armazenamento_pontos(soma) #chamando funcao/salvando somatorio de pontos               
+                armazenamento_pontos(soma) #chamando funcao/salvando somatorio de pontos
        
             if '98989898355531' in mensagem:
                 envio_pontos(cliente)
