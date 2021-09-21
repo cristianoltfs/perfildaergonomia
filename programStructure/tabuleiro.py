@@ -4,7 +4,6 @@ from PyQt5.QtGui import QTextCursor
 from cliente_sem_janela import cliente
 from carta import Carta
 
-
 HOST = 'localhost'
 PORT = 8000
 
@@ -39,8 +38,8 @@ class Tabuleiro(QDialog):
         vetPont.append(self.ui.lePontJog8.text())
 
         self.player.enviar_pontos(vetPont)
-
-
+        print("AQUI")
+        #self.player.visualizar_ranking()
 
     def tiraCarta(self):
         dfCarta = self.player.carta()

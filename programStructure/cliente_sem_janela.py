@@ -28,15 +28,15 @@ class cliente():
         self.s.send(sinal.encode('utf-8'))
         ranking_df = self.s.recv(4096)
         #decodificar o df
-        ranking_recebido = cPickle.loads(carta_df)
+        ranking_recebido = cPickle.loads(ranking_df)
         return(ranking_recebido)    
 
     
     def enviar_pontos(self,lista_pontos):
-        sinal='989898983'
+        sinal = '989898983'
         lista_pontos.append(sinal)
-        lista_string=str(lista_pontos)
-        self.s.send(sinal.encode('utf-8')) 
+        lista_string = str(lista_pontos)
+        self.s.send(lista_string.encode('utf-8'))
         print(lista_pontos)
 
     def enviar_mensagem(self):

@@ -838,7 +838,7 @@ class Ui_PerfilErgonomia(object):
         self.lblJogador8_4.setObjectName("lblJogador8_4")
         self.frame = QtWidgets.QFrame(PerfilErgonomia)
         self.frame.setGeometry(QtCore.QRect(-87, -2, 1541, 771))
-        self.frame.setStyleSheet("image: url(:/img/img/TabuleiroTabelaClaroLogo.png);")
+        self.frame.setStyleSheet("image: url(:/img/img/tabuleiroEscuroTabela.png);")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -891,6 +891,6 @@ class Ui_PerfilErgonomia(object):
         self.leJogador8.setPlaceholderText(_translate("PerfilErgonomia", "Pontos"))
         self.lePontJog8.setPlaceholderText(_translate("PerfilErgonomia", "Inserir pontuação"))
         self.lblJogador8_2.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Jogadores</p></body></html>"))
-        self.lblJogador8_3.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Pontuação</p></body></html>"))
-        self.lblJogador8_4.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Inserir Pontos</p></body></html>"))
+        self.lblJogador8_3.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Pontuação Total</p></body></html>"))
+        self.lblJogador8_4.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Pontos da Rodada</p></body></html>"))
 from Template import img
