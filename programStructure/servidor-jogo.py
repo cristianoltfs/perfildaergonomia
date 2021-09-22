@@ -23,32 +23,15 @@ def contagem_clique(cont):
     contador_csv.to_csv('contador.csv')    
 contagem_clique(0)
 
-
-def armazenamento_pontos(pontuacao):
-    #argumento do tipo list
-    pontos =  {'pontos':pontuacao}
-    pontos_csv =  pd.DataFrame(pontos)
-    pontos_csv.to_csv('pontuação.csv')
-    
-armazenamento_pontos([0,0,0,0,0,0,0,0]) #iniciando arquivo
-
 def tira_carta(contador,cliente):
     carta = cartas.loc[sorteio[contador]]
     carta_bits = cPickle.dumps(carta)
     print(carta)
-    print(carta_bits)
     cliente.send(carta_bits)
     print('*ENVIADO*')
-    
-def envio_pontos(cliente):
-    pontos_csv = pd.read_csv('pontuação.csv') #lendo arquivo
-    pontos_bits = cPickle.dumps(pontos_csv)
-    print(pontos_csv)
-    print(pontos_bits)
-    cliente.send(pontos_bits)
-    print('*ENVIADO*')   
 
-def transmitir_mensagem(mensagem,i,apelidos,dic):
+
+def transmitir_mensagem(mensagem, i, apelidos, dic):
     
     restrito = False
     
@@ -72,7 +55,7 @@ def cabo_cliente(cliente):
     while True:
         
         try:
-            mensagem = cliente.recv(1024)            
+            mensagem = cliente.recv(1024)
             transmitir_mensagem(mensagem, cliente, apelidos, dic)
             mensagem = mensagem.decode('utf-8')
             
@@ -83,21 +66,12 @@ def cabo_cliente(cliente):
                 contagem_clique(ordem)
                 tira_carta(ordem, cliente)
                 print("Carta enviada com sucesso!")
-            if '989898983' in mensagem:
-                tratamento = mensagem.replace("[", "")
-                tratamento = mensagem.replace("]", "")
-                mensagem_pontos = tratamento.split(',')
-                mensagem_pontos.remove('989898983')   
-                
-                valores = list(map(int, mensagem_pontos)) #converter str to int
-                
-                somar_pontos = pd.read_csv('pontuação.csv') #lendo arquivo
-                somar_pontos = list(somar_pontos['pontos'])
-                soma = list(map(lambda v1, v2: v1 + v2, somar_pontos,valores))
-                armazenamento_pontos(soma) #chamando funcao/salvando somatorio de pontos
-       
-            if '98989898355531' in mensagem:
-                envio_pontos(cliente)
+
+            if 'pontos' in mensagem:
+                for cliente in clientes:
+                    print(cliente)
+                    cliente.send(mensagem)
+
         
             
         except:

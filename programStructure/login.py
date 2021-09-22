@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox
 from Template.room import Ui_room
 #from cliente import Cliente
-from tabuleiro import Tabuleiro
+from classeTabuleiro import tabuleiro
 
 #HOST = '200.239.165.217'
 HOST = 'localhost'
@@ -15,6 +15,9 @@ class Login(QMainWindow):
         self.ui.setupUi(self)
         self.ui.btnLogin.clicked.connect(self.logar)
         self.ui.btnClose.clicked.connect(self.end)
+        csv = open('ptsServer.csv', 'w')
+        csv.write('')
+        csv.close()
 
     def logar(self):
         nick = self.ui.leNickName.text()
@@ -22,8 +25,7 @@ class Login(QMainWindow):
             QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um nickname válido.")
         else:
             self.close()
-            frmTabuleiro = Tabuleiro(nick)
-            frmTabuleiro.exec_()
+            tabuleiro(nick)
 
     def end(self):
         self.close()

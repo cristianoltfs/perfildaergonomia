@@ -7,9 +7,28 @@ from carta import Carta
 HOST = 'localhost'
 PORT = 8000
 
-class Tabuleiro(QDialog):
+
+
+
+p2 = int(self.ui.leJogador2.text())
+        p3 = int(self.ui.leJogador3.text())
+        p4 = int(self.ui.leJogador4.text())
+        if self.ui.leJogador5.text() != "":
+            p5 = int(self.ui.leJogador5.text())
+        if self.ui.leJogador6.text() != "":
+            p6 = int(self.ui.leJogador6.text())
+        if self.ui.leJogador7.text() != "":
+            p7 = int(self.ui.leJogador7.text())
+        if self.ui.leJogador8.text() != "":
+            p8 = int(self.ui.leJogador8.text())
+        else:
+
+
+
+
+class Tabu(QDialog):
     def __init__(self, nick):
-        super(Tabuleiro, self).__init__()
+        super(Tabu, self).__init__()
         self.ui = Ui_PerfilErgonomia()
         self.ui.setupUi(self)
         self.ui.btnCarta_2.clicked.connect(self.tiraCarta)

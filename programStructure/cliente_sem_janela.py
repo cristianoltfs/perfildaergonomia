@@ -1,5 +1,6 @@
 import socket
 import threading
+import pandas as pd
 import _pickle as cPickle
 
 
@@ -21,20 +22,10 @@ class cliente():
         #decodificar a carta
         carta_recebida = cPickle.loads(carta_df)
         return(carta_recebida)
-    
-        
-    def visualizar_ranking(self):
-        sinal = '98989898355531'
-        self.s.send(sinal.encode('utf-8'))
-        ranking_df = self.s.recv(4096)
-        #decodificar o df
-        ranking_recebido = cPickle.loads(ranking_df)
-        return(ranking_recebido)    
 
     
     def enviar_pontos(self,lista_pontos):
-        sinal = '989898983'
-        lista_pontos.append(sinal)
+        lista_pontos.append('pontos')
         lista_string = str(lista_pontos)
         self.s.send(lista_string.encode('utf-8'))
 
@@ -50,12 +41,21 @@ class cliente():
                 mensagem = self.s.recv(1024).decode('utf-8')
                 if mensagem == 'APELIDO':
                     self.s.send(self.apelido.encode('utf-8'))
-                else:
-                    print("11111111111111111")
-                    print(mensagem)
-                    print("22222222222222222")
+
+                if 'pontos' in mensagem:
+                    print(f"Mensagem com pontuação: {mensagem}")
+                    #from classeTabuleiro import recebePontos
+                    csv = open('ptsServer.csv', 'w')
+                    csv.write(mensagem)
+                    csv.close()
+
+                #recebePontos(mensagem)
+
+
+
                    
             except:
                 print("An error occured!")
                 self.s.close()
                 break
+
