@@ -37,7 +37,6 @@ class Tabu(QDialog):
         vetPont.append(self.ui.lePontJog6.text())
         vetPont.append(self.ui.lePontJog7.text())
         vetPont.append(self.ui.lePontJog8.text())
-
         self.player.enviar_pontos(vetPont)
         sleep(1)
         self.atualiza()
@@ -51,6 +50,8 @@ class Tabu(QDialog):
         atual = atual.replace("'", "")
         vetPontos = atual.split(',')
 
+        valor1 = int(vetPontos[0]) + int(self.ui.lePontJog1.text())
+        print(valor1)
         self.ui.leJogador1.setText(vetPontos[0])
         self.ui.leJogador2.setText(vetPontos[1])
         self.ui.leJogador3.setText(vetPontos[2])
@@ -59,6 +60,7 @@ class Tabu(QDialog):
         self.ui.leJogador6.setText(vetPontos[5])
         self.ui.leJogador7.setText(vetPontos[6])
         self.ui.leJogador8.setText(vetPontos[7])
+        return
 
     def tiraCarta(self):
         dfCarta = self.player.carta()
@@ -66,6 +68,7 @@ class Tabu(QDialog):
         frmCarta = Carta(dfCarta)
         frmCarta.exec_()
 
-def tabuleiro(nick):
+"""def tabuleiro(nick):
     frmTabuleiro = Tabu(nick)
     frmTabuleiro.exec_()
+"""

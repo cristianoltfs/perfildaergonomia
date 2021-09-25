@@ -4,7 +4,6 @@ import pandas as pd
 from random import sample
 import _pickle as cPickle
 
-
 HOST = 'localhost'
 PORT = 8000
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,13 +27,10 @@ def tira_carta(contador,cliente):
     carta_bits = cPickle.dumps(carta)
     print(carta)
     cliente.send(carta_bits)
-    print('*ENVIADO*')
 
 
 def transmitir_mensagem(mensagem, i, apelidos, dic):
-    
     restrito = False
-    
     for r in apelidos:
         # Codigo de restrição
         vez = '@' + r.decode('utf-8')
@@ -48,12 +44,10 @@ def transmitir_mensagem(mensagem, i, apelidos, dic):
     if not restrito:
         for cliente in clientes:
             print('mensagem pública')
-            cliente.send(mensagem)            
-            
+            cliente.send(mensagem)
             
 def cabo_cliente(cliente):
     while True:
-        
         try:
             mensagem = cliente.recv(1024)
             transmitir_mensagem(mensagem, cliente, apelidos, dic)
@@ -71,8 +65,6 @@ def cabo_cliente(cliente):
                 for cliente in clientes:
                     print(cliente)
                     cliente.send(mensagem)
-
-        
             
         except:
             indice = clientes.index(cliente)
@@ -81,7 +73,6 @@ def cabo_cliente(cliente):
             apelido = apelidos[indice]
             apelidos.remove(apelido)
             break
-
 
 def receber_cliente():
     while True:
