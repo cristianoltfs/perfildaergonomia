@@ -4,8 +4,8 @@ from PyQt5.QtGui import QTextCursor
 from cliente_sem_janela import cliente
 from carta import Carta
 from time import sleep
-HOST = 'localhost'
-PORT = 8000
+HOST = '200.239.165.217'
+PORT = 16000
 
 class Tabu(QDialog):
     def __init__(self, nick):
