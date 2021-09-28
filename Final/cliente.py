@@ -2,7 +2,7 @@ import socket
 import threading
 import _pickle as cPickle
 import time
-HOST = 'localhost'
+HOST = '200.239.165.217'
 PORT = 8000
 
 class cliente():
