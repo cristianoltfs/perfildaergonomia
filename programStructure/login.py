@@ -21,15 +21,13 @@ class Login(QMainWindow):
 
     def logar(self):
         nick = self.ui.leNickName.text()
-        x = 0
         if nick == "":
             QMessageBox.critical(QMessageBox(), "ERROR", "Entre com um nickname válido.")
         else:
-            if x == 0:
-                self.close()
-                frmTabuleiro = Tabu(nick)
-                frmTabuleiro.exec_()
-            x = 1
+            self.close()
+            frmTabuleiro = Tabu(nick)
+            frmTabuleiro.exec_()
+
 
     def end(self):
         self.close()
