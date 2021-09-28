@@ -4,7 +4,7 @@ import pandas as pd
 import _pickle as cPickle
 
 HOST = '200.239.165.217'
-PORT = 8001
+PORT = 8002
 
 class cliente():
     def __init__(self, HOST, PORT):

@@ -18,13 +18,28 @@ def transmitir_mensagem(mensagem):
     for cliente in clientes:
         print('mensagem pública')
         cliente.send(mensagem)
-            
+
+def tira_carta(contador,cliente):
+    carta = cartas.loc[sorteio[contador]]
+    carta_bits = cPickle.dumps(carta)
+    print(carta)
+    cliente.send(carta_bits)
+
 def cabo_cliente(cliente):
     while True:
         try:
             mensagem = cliente.recv(1024)
             transmitir_mensagem(mensagem)
             mensagem = mensagem.decode('utf-8')
+            
+            if 'TIRACARTA' in mensagem:
+                contador = pd.read_csv('contador.csv')
+                ordem = contador.iloc[0][1]
+                ordem = ordem + 1
+                contagem_clique(ordem)
+                tira_carta(ordem, cliente)
+                print("Carta enviada com sucesso!")
+            
         except:
             indice = clientes.index(cliente)
             clientes.remove(cliente)
