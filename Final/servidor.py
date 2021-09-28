@@ -26,9 +26,7 @@ def tira_carta(contador,cliente):
     carta = cartas.loc[sorteio[contador]]
     carta_bits = cPickle.dumps(carta)
     print(carta)
-    print(carta_bits)
     cliente.send(carta_bits)
-    print('* CARTA ENVIADA *')
     
 
 def armazenamento_pontos(pontuacao):
@@ -46,7 +44,7 @@ def envio_pontos(cliente):
 
     print('* PONTOS ENVIADOS *')
 
-
+#OBSOLETO
 def transmitir_mensagem(mensagem):
     for cliente in clientes:
         print('mensagem pública enviada')
@@ -82,8 +80,14 @@ def cabo_cliente(cliente):
 
             if 'VERPONTOS' in mensagem:
                 envio_pontos(cliente)
-                                  
-           
+                
+                
+            if "MEUNOME" in mensagem:
+                esperando_nome = cliente.recv(1024)
+                nome = esperando_nome.decode('utf-8')
+                mensagem = '{}, {}'.format(nome, 'Seu nome está aqui no servidor!')
+                print(mensagem)
+                
         except:
             clientes.remove(cliente)
             cliente.close()
@@ -93,6 +97,7 @@ def receber_cliente():
     while True:
         cliente, endereco = s.accept()
         clientes.append(cliente)
+        print((str(endereco) + " SE CONECTOU NO SERVIDOR"))
         t = threading.Thread(target=cabo_cliente, args=(cliente,))
         t.start()        
         
