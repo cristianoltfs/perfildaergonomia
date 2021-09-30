@@ -2,9 +2,10 @@ import socket
 import threading
 import _pickle as cPickle
 import time
-HOST = '200.239.165.217'
-PORT = 8000
+#HOST = '200.239.165.217'
 
+PORT = 8000
+HOST = 'localhost'
 class cliente():
     def __init__(self, HOST, PORT):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
