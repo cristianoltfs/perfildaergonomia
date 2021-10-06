@@ -30,18 +30,18 @@ class Carta(QDialog):
         self.ui.pteDica11.setPlainText(df[12])
         self.ui.pteDica12.setPlainText(df[13])
 
-        self.ui.pteDica1.setDisabled(1)
-        self.ui.pteDica2.setDisabled(1)
-        self.ui.pteDica3.setDisabled(1)
-        self.ui.pteDica4.setDisabled(1)
-        self.ui.pteDica5.setDisabled(1)
-        self.ui.pteDica6.setDisabled(1)
-        self.ui.pteDica7.setDisabled(1)
-        self.ui.pteDica8.setDisabled(1)
-        self.ui.pteDica9.setDisabled(1)
-        self.ui.pteDica10.setDisabled(1)
-        self.ui.pteDica11.setDisabled(1)
-        self.ui.pteDica12.setDisabled(1)
+        """self.ui.pteDica1.setDisabled(1)
+                                self.ui.pteDica2.setDisabled(1)
+                                self.ui.pteDica3.setDisabled(1)
+                                self.ui.pteDica4.setDisabled(1)
+                                self.ui.pteDica5.setDisabled(1)
+                                self.ui.pteDica6.setDisabled(1)
+                                self.ui.pteDica7.setDisabled(1)
+                                self.ui.pteDica8.setDisabled(1)
+                                self.ui.pteDica9.setDisabled(1)
+                                self.ui.pteDica10.setDisabled(1)
+                                self.ui.pteDica11.setDisabled(1)
+                                self.ui.pteDica12.setDisabled(1)"""
 
 
 
