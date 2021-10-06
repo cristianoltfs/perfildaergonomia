@@ -930,14 +930,5 @@ class Ui_PerfilErgonomia(object):
         self.lblJogador8_3.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Pontuação Total</p></body></html>"))
         self.lblJogador8_4.setText(_translate("PerfilErgonomia", "<html><head/><body><p align=\"center\">Pontos da Rodada</p></body></html>"))
         self.btnAtualizaPontos.setText(_translate("PerfilErgonomia", "Atualizar Pontos"))
-import img_rc
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    PerfilErgonomia = QtWidgets.QDialog()
-    ui = Ui_PerfilErgonomia()
-    ui.setupUi(PerfilErgonomia)
-    PerfilErgonomia.show()
-    sys.exit(app.exec_())
+from template import img
