@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import *
 import sys
 from carta import Carta
 from cliente import cliente
+from PyQt5.QtWidgets import QDialog
+
 PORT = 8000
 HOST = '200.239.165.217'
 
@@ -23,6 +25,15 @@ class Tabuleiro(QDialog):
         self.ui.lePontJog6.setText("0")
         self.ui.lePontJog7.setText("0")
         self.ui.lePontJog8.setText("0")
+        self.ui.leJogador1.setDisabled(1)
+        self.ui.leJogador2.setDisabled(1)
+        self.ui.leJogador3.setDisabled(1)
+        self.ui.leJogador4.setDisabled(1)
+        self.ui.leJogador5.setDisabled(1)
+        self.ui.leJogador6.setDisabled(1)
+        self.ui.leJogador7.setDisabled(1)
+        self.ui.leJogador8.setDisabled(1)
+
 
 
 

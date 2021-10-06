@@ -1,5 +1,5 @@
 import socket
-import threading
+#import threading
 import _pickle as cPickle
 import time
 HOST = '200.239.165.217'
