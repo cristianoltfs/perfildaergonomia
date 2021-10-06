@@ -4,7 +4,7 @@ import sys
 from carta import Carta
 from cliente import cliente
 PORT = 8000
-HOST = 'localhost'
+HOST = '200.239.165.217'
 
 class Tabuleiro(QDialog):
     def __init__(self):
