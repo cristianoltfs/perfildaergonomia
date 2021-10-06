@@ -4,7 +4,7 @@ import sys
 from carta import Carta
 from cliente import cliente
 from PyQt5.QtWidgets import QDialog
-
+import pandas as pd
 PORT = 8000
 HOST = '200.239.165.217'
 
